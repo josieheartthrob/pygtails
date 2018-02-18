@@ -1,4 +1,4 @@
-#TODO: Documentation
+#TODO: Module-level Documentation
 
 import pygame
 import sys
@@ -6,7 +6,7 @@ import sys
 from pygame.locals import *
 
 class Game(object):
-    #TODO: Documentation
+    #TODO: Game Class-level Documentation
 
     def __init__(self, resolution, title, flags=0, depth=0):
         """Create a new game with a blank window
@@ -27,8 +27,11 @@ class Game(object):
                         flags.
         """
         pygame.init() 
-        self.screen = pygame.display.set_mode(resolution, flags)
+        self._screen = pygame.display.set_mode(resolution, flags, depth)
         pygame.display.set_caption(title)
+
+        self._cur_id = 0
+        self._objects = {}
 
         self._handle = {QUIT:            self.quit,
                         ACTIVEVENT:      self.on_focus,
@@ -155,8 +158,14 @@ class Game(object):
         additional functionality call super().on_mouse_move(event) when you're
         redefining the function.
         """
-        #TODO: Implement functionality for on_mouse[enter, exit]
-        pass
+        for obj in self._objects.values():
+            mouse_is_colliding = obj.is_colliding_with(event.pos)
+            if not obj._contains_mouse and mouse_is_colliding:
+                obj._contains_mouse = True
+                obj.on_mouse_enter(event)
+            elif obj._contains_mouse and not mouse_is_colliding:
+                obj._contains_mouse = False
+                obj.on_mouse_exit(event)
 
     def on_mouse_up(self, event):
         """This method is called whenever a mouse button is released.
@@ -211,3 +220,140 @@ class Game(object):
         This method is not predefined.
         """
         pass
+
+    def add_object(self, other):
+        """Add an object to the Game.
+
+        Positional Arguments
+
+        other   The object to add to the game. The object must either be a
+                pygtails.GameObject or implement a specific list of functions
+                and attributes.
+
+        Post Conditions
+
+        returns         The object id
+
+        side-effects    Adds an the given object to the Games inner list of
+                        objects. Changes the game's inner current id.
+        """
+        # TODO: provide full documentation for the functions and attributes
+        #       to implement
+
+        obj_id = self.cur_id
+        self._objects[obj_id] = obj
+        self.cur_id += 1
+        return obj_id
+
+    def destroy_object(self, _id):
+        """Destroys the object with the given id from the game.
+
+        Note: Does not "undraw" the object. This must be done manually (for now)
+        """
+        del self._objects[_id]
+
+    @property
+    def screen(self):
+        """The pygame Surface used to draw and blit images to the screen."""
+        return self._screen
+
+class GameObject(object):
+    #TODO: GameObject Class-level documentation
+    def __init__(self, game, position):
+        """Create a new GameObject
+
+        Positional Arguments:
+
+        game        The pygame.Game object that this GameObject will be
+                    added to.
+
+        position    A 2-tuple of integers representing the x and y coordinates
+                    of the object.
+        """
+        self._game = game
+        self._x, self._y = position
+        self._position = position
+        self._contains_mouse = False
+
+        self._id = game.add_object(self)
+
+    def is_colliding_with(self, other):
+        """Return true if other is colliding with this object.
+
+        Positional Arguments:
+
+        other       A geometric object on the same plane as this object. The
+                    type of the object is specifically not specified, as this
+                    method is meant to support collision detection for multiple
+                    different types of objects determined by its implementation.
+
+        Postconditions
+
+        Returns a boolean value, True if other is colliding with this object,
+        False if not
+        """
+        pass
+
+    def move(self, dx, dy):
+        """Move the object by the given dimensions.
+        
+        Positional Arguments
+        
+        dx  The change in the x-axis. An integer.
+        dy  The change in the y-axis. An integer.
+
+        Post Conditions
+
+        Changes the object's x, y, and position attributes.
+        """
+        self._x += dx
+        self._y += dy
+        self._position = (self._x, self._y)
+
+    @property
+    def game(self):
+        """The pygtails.Game object that this object is a part of."""
+        return self._game
+
+    @property
+    def ID(self):
+        """The id of the game object (An integer)."""
+        return self._id
+
+    @property
+    def position(self):
+        """The position of the game object
+
+        A 2-tuple of integers representing the x and y cooridnates
+
+        Setting this will change the object's x, y, and position attributes.
+        """
+        return self._position
+    @position.setter
+    def position(self, other):
+        self._x, self._y = other
+        self._positon = other
+
+    @property
+    def x(self):
+        """The x position of the game object (An integer).
+        
+        Setting this will change the object's x and position attributes.
+        """
+        return self._x
+    @x.setter
+    def x(self, other):
+        self._x = other
+        self._position = (self._x, self._y)
+
+    @property
+    def y(self):
+        """The y position of the game object (An integer).
+        
+        Setting this will change the object's y and position attributes.
+        """
+        return self._y
+    @y.setter
+    def y(self, other):
+        self._y = other
+        self._posiiton = (self._x, self._y)
