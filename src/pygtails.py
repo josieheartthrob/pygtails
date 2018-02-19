@@ -3,7 +3,8 @@
 import pygame
 import sys
 
-from pygame.locals import *
+from pygame.time import Clock
+from pygame.event import Event
 
 class Game(object):
     #TODO: Game Class-level Documentation
@@ -11,7 +12,7 @@ class Game(object):
     def __init__(self, resolution, title, flags=0, depth=0):
         """Create a new game with a blank window
         
-        Positional Arguments
+        Positional Arguments:
 
         resolution      A 2-tuple of integers specifying the width and height
                         of the screen.
@@ -19,7 +20,7 @@ class Game(object):
         title           A string that will be used as the title of the window.
 
         
-        Keyword Arguments
+        Keyword Arguments:
 
         flags           An integer value representing the the diferent controls
                         over the display mode. For more detailed information,
@@ -32,25 +33,39 @@ class Game(object):
 
         self._cur_id = 0
         self._objects = {}
+        self._contains_mouse = {}
+        self._clicked = {}
 
-        self._handle = {QUIT:            self.quit,
-                        ACTIVEVENT:      self.on_focus,
-                        KEYDOWN:         self.on_key_down,
-                        KEYUP:           self.on_key_up,
-                        MOUSEMOTION:     self.on_mouse_move,
-                        MOUSEBUTTONUP:   self.on_mouse_up,
-                        MOUSEBUTTONDOWN: self.on_mouse_down,
-                        VIDEORESIZE:     self.on_resize}
+        self._keys_pressed = pygame.key.get_pressed()
+
+        self._handle = {pygame.QUIT:            self.quit,
+                        pygame.ACTIVEVENT:      self.on_focus,
+                        pygame.KEYDOWN:         self.on_key_down,
+                        pygame.KEYUP:           self.on_key_up,
+                        pygame.MOUSEMOTION:     self.on_mouse_move,
+                        pygame.MOUSEBUTTONUP:   self.on_mouse_up,
+                        pygame.MOUSEBUTTONDOWN: self.on_mouse_down,
+                        pygame.VIDEORESIZE:     self.on_resize}
 
     def main(self):
         """The main loop. Call this to run the game."""
-        for event in pygame.event.get():
-            self._handle[event.type](event)
+        while True:
+            for event in pygame.event.get():
+                self._handle[event.type](event)
+
+            self._keys_pressed = pygame.key.get_pressed()
+            buttons = pygame.mouse.get_pressed()
+            pos = pygame.mouse.get_pos()
+            rel = pygame.mouse.get_rel()
+
+            event = Event(buttons=buttons, pos=pos, rel=rel)
+            for obj in self._contains_mouse.values():
+                obj.on_mouse_stay(event)
 
     def quit(self, event):
         """The method called when the exit button is pressed.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event   A pygame QUIT event. Has no event attributes.
         
@@ -67,7 +82,7 @@ class Game(object):
     def on_focus(self, event):
         """This method is called whenever the game window loses or gains focus.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event       A pygame ACTIVEEVENT event. Contains the event attributes:
 
@@ -87,7 +102,7 @@ class Game(object):
     def on_key_down(self, event):
         """This method is called whenever a key is pressed.
         
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event       A pygame KEYDOWN event. contains the event attributes:
 
@@ -113,7 +128,7 @@ class Game(object):
     def on_key_up(self, event):
         """This method is called whenever a key is released.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event   A pygame KEYUP event. contains the event attributes:
 
@@ -136,9 +151,9 @@ class Game(object):
     def on_mouse_move(self, event):
         """This method is called whenever the mouse is moved.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
-        event       A pygame MOUSEMOTION event. Contains the attributes:
+        event       A pygame MOUSEMOTION event. Contains the event attributes:
           
           pos       A 2-tuple of integers representing the x and y coordinates
                     of the mouse.
@@ -152,25 +167,33 @@ class Game(object):
                     the right mouse button. If the mouse button is down, the
                     value is 1, 0 if it's up.
 
-        This method is predefined to implement the on_mouse_[enter, exit]
-        functions. If you aren't satisfied with the implementation, feel free
+        This method is predefined to implement the on_mouse_[enter, exit, drag]
+        functions.
+        
+        If you aren't satisfied with the implementation, feel free
         to redefine it. If you want to keep the implementation but also add
         additional functionality call super().on_mouse_move(event) when you're
         redefining the function.
         """
-        for obj in self._objects.values():
+        #TODO: Add support for sleeping vs awake objects
+        for ID, obj in self._objects.items():
             mouse_is_colliding = obj.is_colliding_with(event.pos)
             if not obj._contains_mouse and mouse_is_colliding:
+                self._contains_mouse[ID] = obj
                 obj._contains_mouse = True
                 obj.on_mouse_enter(event)
             elif obj._contains_mouse and not mouse_is_colliding:
+                del self._contains_mouse[ID]
                 obj._contains_mouse = False
                 obj.on_mouse_exit(event)
+
+        for obj in self._clicked.values():
+            obj.on_mouse_drag(event)
 
     def on_mouse_up(self, event):
         """This method is called whenever a mouse button is released.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event       A pygame MOUSEBUTTONUP event. Contains the attributes:
 
@@ -181,14 +204,22 @@ class Game(object):
                     represents the left mouse button, 2 represents the middle
                     mouse button, and 3 represents the right mouse button.
 
-        This method is not predefined.
+        This method is predefined to implement the GameObject.on_mouse_up
+        method and to update internal data about whether or not an object is
+        clicked.
+
+        To redefine this method while keeping the implementation call
+        super().on_mouse_up(event) at the top of your function.
         """
-        pass
+        if event.button == 1:
+            for obj in self._clicked.values():
+                obj.on_mouse_up(event)
+            self._clicked.clear()
 
     def on_mouse_down(self, event):
         """This method is called whenever a mouse button is pressed.
 
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event       A pygame MOUSEBUTTONDOWN event. Contains the attributes:
 
@@ -199,14 +230,22 @@ class Game(object):
                     represents the left mouse button, 2 represents the middle
                     mouse button, and 3 represents the right mouse button.
 
-        This method is not predefined.
+        This method is predefined to implement the GameObject.on_mouse_down
+        method and to update internal data bout whether or not an object is
+        clicked.
+
+        To redefine this method while keeping the implementation, call
+        super().on_mouse_up(event) at the top of your function.
         """
-        pass
+        if event.button == 1:
+            for obj in self._contains_mouse.values():
+                obj.on_mouse_down(event)
+            self._clicked.update(self._contains_mouse)
 
     def on_resize(self, event):
         """This method is called whenever the window is resized.
         
-        Positional Arguments (passed implicitly)
+        Positional Arguments (passed implicitly):
 
         event       A pygame VIDEORESIZE event. Contains the attributes:
 
@@ -224,13 +263,13 @@ class Game(object):
     def add_object(self, other):
         """Add an object to the Game.
 
-        Positional Arguments
+        Positional Arguments:
 
         other   The object to add to the game. The object must either be a
                 pygtails.GameObject or implement a specific list of functions
                 and attributes.
 
-        Post Conditions
+        Post Conditions:
 
         returns         The object id
 
@@ -251,6 +290,22 @@ class Game(object):
         Note: Does not "undraw" the object. This must be done manually (for now)
         """
         del self._objects[_id]
+        for name in ("contains_mouse", "clicked"):
+            D = getattr(self, "_"+name)
+            if _id in D: del D[_id]
+
+    def key_is_pressed(self, key):
+        """Determine if a key is pressed
+
+        Positional Arguments:
+
+        key     A pygame key constant (pygame.locals variable starting with K_)
+
+        Postconditions:
+
+        returns True if the specified key is pressed, False if not.
+        """
+        return self._keys_pressed[key]
 
     @property
     def screen(self):
@@ -286,23 +341,118 @@ class GameObject(object):
                     type of the object is specifically not specified, as this
                     method is meant to support collision detection for multiple
                     different types of objects determined by its implementation.
+                    Must implement collision with a 2D point (tuple).
 
-        Postconditions
+        Postconditions:
 
         Returns a boolean value, True if other is colliding with this object,
-        False if not
+        False if not.
+
+        This method is not implemented on the GameObject level.
+        """
+        pass
+
+    def on_mouse_enter(self, event):
+        """This method is called whenever the mouse enters this object.
+
+        Positional Arguments (passed implicitly):
+
+        event       A pygame MOUSEMOTION event. Contains the event attributes:
+          
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse.
+
+          rel       A 2-tuple of integers representing the change in x and y
+                    since the last time this function was called.
+
+          buttons   A 3-tuple of integers representing the amount of mouse
+                    buttons being pressed. Index 0 represents the left mouse
+                    button, 1 represents the middle mouse button, 2 represents
+                    the right mouse button. If the mouse button is down, the
+                    value is 1, 0 if it's up.
+
+        This method is not predefined.
+        """
+        pass
+
+    def on_mouse_exit(self, event):
+        """This method is called whenever the mouse exits this object.
+
+        Positional Arguments (passed implicitly):
+
+        event       A pygame MOUSEMOTION event. Contains the event attributes:
+          
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse.
+
+          rel       A 2-tuple of integers representing the change in x and y
+                    since the last time this function was called.
+
+          buttons   A 3-tuple of integers representing the amount of mouse
+                    buttons being pressed. Index 0 represents the left mouse
+                    button, 1 represents the middle mouse button, 2 represents
+                    the right mouse button. If the mouse button is down, the
+                    value is 1, 0 if it's up.
+
+        This method is not predefined.
+        """
+        pass
+
+    def on_mouse_stay(self, event):
+        """This method is called each frame the mouse is within this object.
+
+        Positional Arguments (passed implicitly):
+
+        event       A mock pygame MOUSEMOITION event. Contains attributes:
+
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse.
+
+          rel       A 2-tuple of integers representing the change in x and y
+                    since the last time this function was called.
+
+          buttons   A 3-tuple of integers representing the amount of mouse
+                    buttons being pressed. Index 0 represents the left mouse
+                    button, 1 represents the middle mouse button, 2 represents
+                    the right mouse button. If the mouse button is down, the
+                    value is 1, 0 if it's up.
+
+        This method is not predefined.
+        """
+        pass
+
+    def on_mouse_drag(self, event):
+        """This method is called each frame this object is dragged by the mouse.
+
+        Positional Arguments (passed implicitly):
+
+        event       A pygame MOUSEMOTION event. Contains the event attributes:
+          
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse.
+
+          rel       A 2-tuple of integers representing the change in x and y
+                    since the last time this function was called.
+
+          buttons   A 3-tuple of integers representing the amount of mouse
+                    buttons being pressed. Index 0 represents the left mouse
+                    button, 1 represents the middle mouse button, 2 represents
+                    the right mouse button. If the mouse button is down, the
+                    value is 1, 0 if it's up.
+
+        This method is not predefined.
         """
         pass
 
     def move(self, dx, dy):
         """Move the object by the given dimensions.
         
-        Positional Arguments
+        Positional Arguments:
         
         dx  The change in the x-axis. An integer.
         dy  The change in the y-axis. An integer.
 
-        Post Conditions
+        Post Conditions:
 
         Changes the object's x, y, and position attributes.
         """
