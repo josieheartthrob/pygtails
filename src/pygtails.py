@@ -19,7 +19,7 @@ class Game(object):
     Pubic Methods:
 
     main, quit, on_focus, on_key_down, on_key_up, on_mouse_move, on_mouse_up,
-    on_mouse_down, on_resize, add_object, destroy_object, key_is_pressed
+    on_mouse_down, on_resize, update, add_object, destroy_object, key_is_pressed
 
     Instance variables:
 
@@ -57,7 +57,7 @@ class Game(object):
         self._keys_pressed = pygame.key.get_pressed()
 
         self._handle = {pygame.QUIT:            self.quit,
-                        pygame.ACTIVEVENT:      self.on_focus,
+                        pygame.ACTIVEEVENT:      self.on_focus,
                         pygame.KEYDOWN:         self.on_key_down,
                         pygame.KEYUP:           self.on_key_up,
                         pygame.MOUSEMOTION:     self.on_mouse_move,
@@ -76,9 +76,14 @@ class Game(object):
             pos = pygame.mouse.get_pos()
             rel = pygame.mouse.get_rel()
 
-            event = Event(buttons=buttons, pos=pos, rel=rel)
+            event = Event(pygame.MOUSEMOTION, buttons=buttons,
+                          pos=pos, rel=rel)
             for obj in self._contains_mouse.values():
                 obj.on_mouse_stay(event)
+
+            self.update()
+            for obj in self._objects.values():
+                obj.update()
 
     def quit(self, event):
         """The method called when the exit button is pressed.
@@ -273,6 +278,13 @@ class Game(object):
           w         An integer representing the width of the screen.
 
           h         An integer representing the height of the screen.
+
+        This method is not predefined.
+        """
+        pass
+
+    def update(self):
+        """This method is called every frame.
 
         This method is not predefined.
         """
