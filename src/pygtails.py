@@ -1,4 +1,10 @@
-#TODO: Module-level Documentation
+"""A simple wrapper around pygame.
+
+Game        implements engine functionality. Subclass to build games.
+GameObject  A simple class to provide a more intuitive approach to gamedev.
+"""
+#TODO: better documentation for pygame keycodes, key mod flags, and display
+#      mode flags
 
 import pygame
 import sys
@@ -7,25 +13,37 @@ from pygame.time import Clock
 from pygame.event import Event
 
 class Game(object):
-    #TODO: Game Class-level Documentation
+    
+    """A class that handles pygame events, input, and mouse-collision.
+
+    Pubic Methods:
+
+    main, quit, on_focus, on_key_down, on_key_up, on_mouse_move, on_mouse_up,
+    on_mouse_down, on_resize, add_object, destroy_object, key_is_pressed
+
+    Instance variables:
+
+    screen
+
+    """
 
     def __init__(self, resolution, title, flags=0, depth=0):
-        """Create a new game with a blank window
+        """Create a new game with a blank window.
         
         Positional Arguments:
 
-        resolution      A 2-tuple of integers specifying the width and height
-                        of the screen.
+        resolution      A 2-tuple of integers specifying the width and
+                        height of the screen.
 
-        title           A string that will be used as the title of the window.
-
+        title           A string that will be used as the title of the
+                        window.
         
         Keyword Arguments:
 
-        flags           An integer value representing the the diferent controls
-                        over the display mode. For more detailed information,
-                        see the module documentation on pygame display mode
-                        flags.
+        flags           An integer value representing the the diferent
+                        controls over the display mode. For more detailed
+                        information, see the module documentation on pygame
+                        display mode flags.
         """
         pygame.init() 
         self._screen = pygame.display.set_mode(resolution, flags, depth)
@@ -84,16 +102,16 @@ class Game(object):
 
         Positional Arguments (passed implicitly):
 
-        event       A pygame ACTIVEEVENT event. Contains the event attributes:
+        event       A pygame ACTIVEEVENT event. Contains event attributes:
 
-          gain      An integer. Has a value of 1 when the window comes into
-                    focus or when the mouse enters the window. Has a value
-                    of 0 when the window goes out of focus or when the mouse
-                    leaves the window.
+          gain      An integer. Has a value of 1 when the window comes
+                    into focus or when the mouse enters the window. Has a
+                    value of 0 when the window goes out of focus or when the
+                    mouse leaves the window.
 
           state     An integer. Has a value of 1 when the mouse exits or
-                    leaves the window. Has a value of 2 when the window gains
-                    or loses focus.
+                    leaves the window. Has a value of 2 when the window
+                    gains or loses focus.
 
         This method is not predefined.
         """
@@ -110,9 +128,9 @@ class Game(object):
 
           key       An integer value represinting the key being pressed. The
                     corresponding character is defined by pygame.locals
-                    variables prefaced with K_. For a more in-depth explanation
-                    of these, see the module documentation section for pygame
-                    keycodes.
+                    variables prefaced with K_. For a more in-depth
+                    explanation of these, see the module documentation
+                    section for pygame keycodes.
 
           mod       An integer flag value representing the total "modulation"
                     (shift, ctrl, alt, etc.) keys being pressed when the
@@ -295,7 +313,7 @@ class Game(object):
             if _id in D: del D[_id]
 
     def key_is_pressed(self, key):
-        """Determine if a key is pressed
+        """Determine if a key is pressed.
 
         Positional Arguments:
 
@@ -313,7 +331,20 @@ class Game(object):
         return self._screen
 
 class GameObject(object):
-    #TODO: GameObject Class-level documentation
+
+    """A simple class to make game development with pygame more intuitive.
+
+    Public Methods:
+
+    is_colliding_with, update, on_mouse_enter, on_mouse_exit, on_mouse_stay,
+    on_mouse_down, on_mouse_up, on_mouse_drag, move
+
+    Instance Variables:
+
+    game, ID, position, x, y
+
+    """
+
     def __init__(self, game, position):
         """Create a new GameObject
 
@@ -349,6 +380,13 @@ class GameObject(object):
         False if not.
 
         This method is not implemented on the GameObject level.
+        """
+        pass
+
+    def update(self):
+        """This method is called every frame.
+
+        This method is not predefined.
         """
         pass
 
@@ -421,6 +459,42 @@ class GameObject(object):
         """
         pass
 
+    def on_mouse_down(self, event):
+        """This method is called when the mouse is pressed inside this object.
+
+        Positional Arguments (passed implicitly):
+
+        event       A pygame.MOUSEBUTTONDOWN event. Contains event attributes:
+
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse when it was pressed.
+
+          button    An integer representing the button being pressed. 1
+                    represents the left mouse button, 2 represents the middle
+                    mouse button, and 3 represents the right mouse button.
+
+        This method is not predefined.
+        """
+        pass
+
+    def on_mouse_up(self, event):
+        """This method is called on mouse up if this object is clicked.
+
+        Positional Arguments (passed implicitly):
+
+        event       A pygame MOUSEBUTTONUP event. Contains the attributes:
+
+          pos       A 2-tuple of integers representing the x and y coordinates
+                    of the mouse when it was released.
+
+          button    An integer representing the button being released. 1
+                    represents the left mouse button, 2 represents the middle
+                    mouse button, and 3 represents the right mouse button.
+
+        This method is not predefined.
+        """
+        pass
+
     def on_mouse_drag(self, event):
         """This method is called each frame this object is dragged by the mouse.
 
@@ -445,8 +519,7 @@ class GameObject(object):
         pass
 
     def move(self, dx, dy):
-        """Move the object by the given dimensions.
-        
+        """Move the object by the given dimensions.  
         Positional Arguments:
         
         dx  The change in the x-axis. An integer.
@@ -472,7 +545,7 @@ class GameObject(object):
 
     @property
     def position(self):
-        """The position of the game object
+        """The position of the game object.
 
         A 2-tuple of integers representing the x and y cooridnates
 
