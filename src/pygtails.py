@@ -5,149 +5,194 @@ GameObject  A simple class to provide a more intuitive approach to gamedev.
 
 Pygame Constants
 
-One of the reasons I decided to create this little library is because I feel
-that pygame isn't very well documented. Part of this is attributed to poor
-organization (in my opinion) of documentation of related data types and
-functions. This documentation aims to remedy that by putting the documentation
-in a visible spot to be easy to reference.
+    One of the reasons I decided to create this little library is because I
+    feel that pygame isn't very well documented. Part of this is attributed to
+    poor organization (in my opinion) of documentation of related data types
+    and functions. This documentation aims to remedy that by putting the
+    documentation in a visible spot to be easy to reference.
 
-The following documentation is taken straight from the pygame documentation.
+The following table is almost directly from the pygame documentation.
 
 Keycodes
 
-Pygame name     ascii   description
-K_BACKSPACE     \\b     backspace
-K_TAB           \\t     tab
-K_CLEAR                 clear
-K_RETURN        \\r     return
-K_PAUSE                 pause
-K_ESCAPE        ^[      escape
-K_SPACE                 space
-K_EXCLAIM       !       exlclamation point
-K_QUOTEDBL      "       double quote
-K_HASH          #       hashtag
-K_DOLLAR        $       dollar sign
-K_AMPERSAND     &       ampersand
-K_QUOTE         '       single quote
-K_LEFTPAREN     (       opening parenthesis
-K_RIGHTPAREN    )       closing parenthesis
-K_ASTERISK      *       asterisk
-K_PLUS          +       plus
-K_COMMA         ,       comma
-K_MINUS         -       hyphen
-K_PERIOD        .       period
-K_SLASH         /       forward slash
-K_0             0       0
-K_1             1       1
-K_2             2       2
-K_3             3       3
-K_4             4       4
-K_5             5       5
-K_6             6       6
-K_7             7       7
-K_8             8       8
-K_9             9       9
-K_COLON         :       colon
-K_SEMICOLON     ;       semicolon
-K_LESS          <       less-than
-K_EQUALS        =       equals
-K_GREATER       >       greater-than
-K_QUESTION      ?       question mark
-K_AT            @       at sign
-K_LEFTBRACKET   [       opening sqaure bracket
-K_BACKSLASH     \\      backslash
-K_RIGHTBRACKET  ]       closing right bracket
-K_CARET         ^       caret
-K_UNDERSCORE    _       underscore
-K_BACKQUOTE     `       backtick
-K_a             a       a
-K_b             b       b
-K_c             c       c
-K_d             d       d
-K_e             e       e
-K_f             f       f
-K_g             g       g
-K_h             h       h
-K_i             i       i
-K_j             j       j
-K_k             k       k
-K_l             l       l
-K_m             m       m
-K_n             n       n
-K_o             o       o
-K_p             p       p
-K_q             q       q
-K_r             r       r
-K_s             s       s
-K_t             t       t
-K_u             u       u
-K_v             v       v
-K_w             w       w
-K_x             x       x
-K_y             y       y
-K_z             z       z
-K_DELETE                delete
-K_KP0                   numpad 0
-K_KP1                   numpad 1
-K_KP2                   numpad 2
-K_KP3                   numpad 3
-K_KP4                   numpad 4
-K_KP5                   numpad 5
-K_KP6                   numpad 6
-K_KP7                   numpad 7
-K_KP8                   numpad 8
-K_KP9                   numpad 9
-K_KP_PERIOD     .       numpad period
-K_KP_DIVIDE     /       numpad divide
-K_KP_MULTIPLY   *       numpad multiply
-K_KP_MINUS      -       numpad minus
-K_KP_PLUS       +       numpad plus
-K_KP_ENTER      \\r     numpad enter
-K_KP_EQUALS     =       numpad equals
-K_UP                    up arrow
-K_DOWN                  down arrow
-K_RIGHT                 right arrow
-K_LEFT                  left arrow
-K_INSERT                insert
-K_HOME                  home
-K_END                   end
-K_PAGEUP                page up
-K_PAGEDOWN              page down
-K_F1                    F1
-K_F3                    F3
-K_F4                    F4
-K_F5                    F5
-K_F6                    F6
-K_F7                    F8
-K_F9                    F9
-K_F10                   F10
-K_F11                   F11
-K_F12                   F12
-K_F13                   F13
-K_F14                   F14
-K_F15                   F15
-K_NUMLOCK               num lock
-K_CAPSLOCK              caps lock
-K_SCROLLOCK             scroll lock
-K_RSHIFT                right shift
-K_LSHIFT                left shift
-K_RCTRL                 right control
-K_LCTRL                 left control
-K_RALT                  right alt
-K_LALT                  left alt
-K_RMETA                 right meta
-K_LMETA                 left meta
-K_LSUPER                left "windows" key
-K_RSUPER                right "windows" key
-K_MODE                  mode shift
-K_HELP                  help
-K_PRINT                 print screen
-K_SYSREQ                sysrq
-K_BREAK                 break
-K_MENU                  menu
-K_POWER                 power
-K_EURO                  euro
+    Pygame name     ascii   description
+    K_BACKSPACE     \\b     backspace
+    K_TAB           \\t     tab
+    K_CLEAR                 clear
+    K_RETURN        \\r     return
+    K_PAUSE                 pause
+    K_ESCAPE        ^[      escape
+    K_SPACE                 space
+    K_EXCLAIM       !       exlclamation point
+    K_QUOTEDBL      "       double quote
+    K_HASH          #       hashtag
+    K_DOLLAR        $       dollar sign
+    K_AMPERSAND     &       ampersand
+    K_QUOTE         '       single quote
+    K_LEFTPAREN     (       opening parenthesis
+    K_RIGHTPAREN    )       closing parenthesis
+    K_ASTERISK      *       asterisk
+    K_PLUS          +       plus
+    K_COMMA         ,       comma
+    K_MINUS         -       hyphen
+    K_PERIOD        .       period
+    K_SLASH         /       forward slash
+    K_0             0       0
+    K_1             1       1
+    K_2             2       2
+    K_3             3       3
+    K_4             4       4
+    K_5             5       5
+    K_6             6       6
+    K_7             7       7
+    K_8             8       8
+    K_9             9       9
+    K_COLON         :       colon
+    K_SEMICOLON     ;       semicolon
+    K_LESS          <       less-than
+    K_EQUALS        =       equals
+    K_GREATER       >       greater-than
+    K_QUESTION      ?       question mark
+    K_AT            @       at sign
+    K_LEFTBRACKET   [       opening sqaure bracket
+    K_BACKSLASH     \\      backslash
+    K_RIGHTBRACKET  ]       closing right bracket
+    K_CARET         ^       caret
+    K_UNDERSCORE    _       underscore
+    K_BACKQUOTE     `       backtick
+    K_a             a       a
+    K_b             b       b
+    K_c             c       c
+    K_d             d       d
+    K_e             e       e
+    K_f             f       f
+    K_g             g       g
+    K_h             h       h
+    K_i             i       i
+    K_j             j       j
+    K_k             k       k
+    K_l             l       l
+    K_m             m       m
+    K_n             n       n
+    K_o             o       o
+    K_p             p       p
+    K_q             q       q
+    K_r             r       r
+    K_s             s       s
+    K_t             t       t
+    K_u             u       u
+    K_v             v       v
+    K_w             w       w
+    K_x             x       x
+    K_y             y       y
+    K_z             z       z
+    K_DELETE                delete
+    K_KP0                   numpad 0
+    K_KP1                   numpad 1
+    K_KP2                   numpad 2
+    K_KP3                   numpad 3
+    K_KP4                   numpad 4
+    K_KP5                   numpad 5
+    K_KP6                   numpad 6
+    K_KP7                   numpad 7
+    K_KP8                   numpad 8
+    K_KP9                   numpad 9
+    K_KP_PERIOD     .       numpad period
+    K_KP_DIVIDE     /       numpad divide
+    K_KP_MULTIPLY   *       numpad multiply
+    K_KP_MINUS      -       numpad minus
+    K_KP_PLUS       +       numpad plus
+    K_KP_ENTER      \\r     numpad enter
+    K_KP_EQUALS     =       numpad equals
+    K_UP                    up arrow
+    K_DOWN                  down arrow
+    K_RIGHT                 right arrow
+    K_LEFT                  left arrow
+    K_INSERT                insert
+    K_HOME                  home
+    K_END                   end
+    K_PAGEUP                page up
+    K_PAGEDOWN              page down
+    K_F1                    F1
+    K_F3                    F3
+    K_F4                    F4
+    K_F5                    F5
+    K_F6                    F6
+    K_F7                    F8
+    K_F9                    F9
+    K_F10                   F10
+    K_F11                   F11
+    K_F12                   F12
+    K_F13                   F13
+    K_F14                   F14
+    K_F15                   F15
+    K_NUMLOCK               num lock
+    K_CAPSLOCK              caps lock
+    K_SCROLLOCK             scroll lock
+    K_RSHIFT                right shift
+    K_LSHIFT                left shift
+    K_RCTRL                 right control
+    K_LCTRL                 left control
+    K_RALT                  right alt
+    K_LALT                  left alt
+    K_RMETA                 right meta
+    K_LMETA                 left meta
+    K_LSUPER                left "windows" key
+    K_RSUPER                right "windows" key
+    K_MODE                  mode shift
+    K_HELP                  help
+    K_PRINT                 print screen
+    K_SYSREQ                sysrq
+    K_BREAK                 break
+    K_MENU                  menu
+    K_POWER                 power
+    K_EURO                  euro
 
+Pygame Flags
+
+A Quick Primer on Flags
+
+    If you're unfamiliar with the concept of a flag in the context of computer
+    science, hopefully this is a decent place to start. A flag, in this case,
+    is an integer value that represents a combination of different values.
+    Each value is represented as a power of two, or as a bit of an integer.
+    If we look at the binary representation of an integer, it can be said that
+    for each value in the flag collection, if the value is "active" it's
+    represented as a 1. If the value is "inactive" it's represented as a 0.
+
+    As an example, let's say we have a flag with two possible values; let's
+    say "left" and "right"; let's say "left" is represented by the 2^0 place
+    and "right" is represented by the 2^1 place. The possible flag values can
+    then be represented by the following table:
+
+               | R inactive |  R active  |
+    --------------------------------------
+    L inactive |   00 (0)   |   10 (2)   |
+    L active   |   01 (1)   |   11 (3)   |
+    
+    Combining of flags is usualy done with bitwise operations, specifically
+    bitwise OR (|). Bitwise OR works similarly to boolean or. When combining
+    two or more values via bitwise-OR, every 1 that appears in the binary
+    representation will appear in the result.
+
+    e.g.    8 (1000) | 1 (0001) = 9 (1001)
+            6 (0110) | 3 (0011) = 7 (0111)
+
+    In the context of pygame, an example of how this can be used is to check
+    if mutliple key mods are down. To check if both ctrl and alt are pressed,
+    you might check the value of the key mod against KMOD_CTRL | KMOD_ALT.
+    A good way to do this is probably something like
+
+        mod | (KMOD_CTRL | KMOD_ALT) == mod
+
+    This will perform a inclusive check (other key mods can be pressed as well)
+    to see if ctrl and alt are pressed.
+
+        KMOD_CTRL | KMOD_ALT == mod
+        
+    will perform an exclusive check.
+
+Key Mod Flags
 
 """
 #TODO: better documentation for pygame keycodes, key mod flags, and display
