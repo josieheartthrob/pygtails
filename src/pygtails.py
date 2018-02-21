@@ -14,34 +14,30 @@ class Game(object):
     
     """A class that handles pygame events, input, and mouse-collision.
 
-    Pubic Methods:
+    Public Methods:
 
-    main, quit, on_focus, on_key_down, on_key_up, on_mouse_move, on_mouse_up,
-    on_mouse_down, on_resize, update, add_object, destroy_object, key_is_pressed
+        | main, quit, on_focus, on_key_down, on_key_up, on_mouse_move,
+        | on_mouse_up, on_mouse_down, on_resize, update, add_object,
+        | destroy_object, key_is_pressed
 
     Instance variables:
 
-    screen
+        | screen
 
     """
 
     def __init__(self, resolution, title, flags=0, depth=0):
         """Create a new game with a blank window.
         
-        Positional Arguments:
+        *resolution* is a 2-tuple of integers that specify the width and height
+        of the screen.
 
-        resolution      A 2-tuple of integers specifying the width and
-                        height of the screen.
-
-        title           A string that will be used as the title of the
-                        window.
+        *title* is a string used as the title of the window.
         
-        Keyword Arguments:
-
-        flags           An integer value representing the the diferent
-                        controls over the display mode. For more detailed
-                        information, see the module documentation on pygame
-                        display mode flags.
+        *flags* is an integer flag representing the different controls over the
+        display mode that are active. For a full list of the different flags,
+        see :ref:`Pygame Display Mode Flags`. For more information on how flags
+        work, see :doc:`the Flags tutorial <flag-tut>`.
         """
         pygame.init() 
         self._screen = pygame.display.set_mode(resolution, flags, depth)
@@ -55,7 +51,7 @@ class Game(object):
         self._keys_pressed = pygame.key.get_pressed()
 
         self._handle = {pygame.QUIT:            self.quit,
-                        pygame.ACTIVEEVENT:      self.on_focus,
+                        pygame.ACTIVEEVENT:     self.on_focus,
                         pygame.KEYDOWN:         self.on_key_down,
                         pygame.KEYUP:           self.on_key_up,
                         pygame.MOUSEMOTION:     self.on_mouse_move,
@@ -86,14 +82,12 @@ class Game(object):
     def quit(self, event):
         """The method called when the exit button is pressed.
 
-        Positional Arguments (passed implicitly):
-
-        event   A pygame QUIT event. Has no event attributes.
+        *event* is a pygame ``QUIT`` event. It has no event attributes.
         
-        This method is predefined as
+        This method is predefined as::
         
-        pygame.quit()
-        sys.exit()
+            pygame.quit()
+            sys.exit()
         
         Redefine it if you need more control.
         """
@@ -101,20 +95,18 @@ class Game(object):
         sys.exit()
 
     def on_focus(self, event):
-        """This method is called whenever the game window loses or gains focus.
+        """This method is called whenever the window loses or gains focus.
 
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``ACTIVEEVENT`` event. It contains the event
+        attributes ``gain`` and ``state``.
 
-        event       A pygame ACTIVEEVENT event. Contains event attributes:
+        *event.gain* is an integer. It has a value of 1 when the window comes
+        into focus or when the mouse enters the window. It has a value of 0
+        when the window goes out of focus or when the mouse leaves the window.
 
-          gain      An integer. Has a value of 1 when the window comes
-                    into focus or when the mouse enters the window. Has a
-                    value of 0 when the window goes out of focus or when the
-                    mouse leaves the window.
-
-          state     An integer. Has a value of 1 when the mouse exits or
-                    leaves the window. Has a value of 2 when the window
-                    gains or loses focus.
+        *event.state* is an integer. It has a value of 1 when the mouse exits or
+        leaves the window. It has a value of 2 when the window gains or loses
+        focus.
 
         This method is not predefined.
         """
@@ -123,24 +115,17 @@ class Game(object):
     def on_key_down(self, event):
         """This method is called whenever a key is pressed.
         
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``KEYDOWN`` event. It contains the event
+        attributes ``unicode``, ``key``, and ``mod``.
 
-        event       A pygame KEYDOWN event. contains the event attributes:
+        *event.unicode* is the unicode representation of the key being pressed.
 
-          unicode   The unicode value that was pressed.
+        *event.key* is a pygame keycode representing the key being pressed.
+        For a full list key constants, see :ref:`Pygame Keycodes`.
 
-          key       An integer value represinting the key being pressed. The
-                    corresponding character is defined by pygame.locals
-                    variables prefaced with K\_. For a more in-depth
-                    explanation of these, see the pygame documentation
-                    section for pygame keycodes.
-
-          mod       An integer flag value representing the total "modulation"
-                    (shift, ctrl, alt, etc.) keys being pressed when the
-                    current key was pressed. The possible flags are defined by
-                    pygame.locals variables prefaced with KMOD\_. For more in-
-                    depth explanation of these, see the module documentation
-                    for pygame key mod flags.
+        *event.mod* is a pygame key mod flag representing the "modulating"
+        keys (shift, ctrl, alt, etc.) being pressed when the current key was
+        pressed. For a list of these flags, see :ref:`Pygame Key Mod Flags`.
 
         This method is not predefined.
         """
@@ -149,21 +134,15 @@ class Game(object):
     def on_key_up(self, event):
         """This method is called whenever a key is released.
 
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``KEYUP`` event. It contains the event attributes
+        ``key`` and ``mod``.
 
-        event   A pygame KEYUP event. contains the event attributes:
+        *event.key* is a pygame keycode representing the key being released.
+        For a full list key constants, see :ref:`Pygame Keycodes`.
 
-          key   An integer value representing the key being released. The
-                corresponding character is defined by pygame.locals variables
-                prefaced with K\_. For more in-depth explanation of these, see
-                th module documentation for pygame keycodes.
-
-          mod   An integer flag value representing the total "modulation"
-                (shit, ctrl, alt, etc.) keys being pressed when the current
-                key was released. The possible flags are defined by
-                pygame.locals variables prefaced with KMOD\_. For a more in-
-                depth explanation of thses, see the module documentation for
-                pygame key mod flags.
+        *event.mod* is a pygame key mod flag representing the "modulating" keys
+        (shift, ctrl, alt, etc.) pressed when the current key was released.
+        For a full list of these flags, see :ref:`Pygame Key Mod Flags`.
 
         This method is not predefined.
         """
@@ -172,21 +151,19 @@ class Game(object):
     def on_mouse_move(self, event):
         """This method is called whenever the mouse is moved.
 
-        Positional Arguments (passed implicitly):
-
-        event       A pygame MOUSEMOTION event. Contains the event attributes:
+        *event* is a pygame ``MOUSEMOTION`` event. It contains the event
+        attributes ``pos``, ``rel``, and ``buttons``.
           
-          pos       A 2-tuple of integers representing the x and y coordinates
-                    of the mouse.
+        *event.pos* is a 2-tuple of integers representing the x and y
+        coordinates of the mouse.
 
-          rel       A 2-tuple of integers representing the change in x and y
-                    since the last time this function was called.
+        *event.rel* is a 2-tuple of integers representing the change in x and y
+        coordinates since the last time this function was called.
 
-          buttons   A 3-tuple of integers representing the amount of mouse
-                    buttons being pressed. Index 0 represents the left mouse
-                    button, 1 represents the middle mouse button, 2 represents
-                    the right mouse button. If the mouse button is down, the
-                    value is 1, 0 if it's up.
+        *event.buttons* is a 3-tuple of integers representing the amount of
+        mouse buttons being pressed. Index 0 represents the left mouse button,
+        1 represents the middle mouse button, 2 represents the right mouse
+        button. If the mouse button is down, the value is 1, 0 if it's up.
 
         This method is predefined to implement the on_mouse_[enter, exit, drag]
         functions.
@@ -214,16 +191,15 @@ class Game(object):
     def on_mouse_up(self, event):
         """This method is called whenever a mouse button is released.
 
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``MOUSEBUTTONUP`` event. It contains the event
+        attributes ``pos`` and ``button``.
 
-        event       A pygame MOUSEBUTTONUP event. Contains the attributes:
+        *event.pos* is a 2-tuple of integers representing the x and y
+        coordinates of the mouse when it was released.
 
-          pos       A 2-tuple of integers representing the x and y coordinates
-                    of the mouse when it was released.
-
-          button    An integer representing the button being released. 1
-                    represents the left mouse button, 2 represents the middle
-                    mouse button, and 3 represents the right mouse button.
+        *event.button* is an integer representing the button being released. 1
+        represents the left mouse button, 2 represents the middle mouse button,
+        and 3 represents the right mouse button.
 
         This method is predefined to implement the GameObject.on_mouse_up
         method and to update internal data about whether or not an object is
@@ -240,16 +216,15 @@ class Game(object):
     def on_mouse_down(self, event):
         """This method is called whenever a mouse button is pressed.
 
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``MOUSEBUTTONDOWN`` event. It contains the event
+        attributes ``pos`` and ``button``.
 
-        event       A pygame MOUSEBUTTONDOWN event. Contains the attributes:
+        *event.pos* is a 2-tuple of integers representing the x and y
+        coordinates of the mouse when it was released.
 
-          pos       A 2-tuple of integers representing the x and y coordinates
-                    of the mouse when it was pressed.
-
-          button    An integer representing the button being pressed. 1
-                    represents the left mouse button, 2 represents the middle
-                    mouse button, and 3 represents the right mouse button.
+        *event.button* is an integer representing the button being pressed. 1
+        represents the left mouse button, 2 represents the middle mouse button,
+        and 3 represents the right mouse button.
 
         This method is predefined to implement the GameObject.on_mouse_down
         method and to update internal data bout whether or not an object is
@@ -266,16 +241,15 @@ class Game(object):
     def on_resize(self, event):
         """This method is called whenever the window is resized.
         
-        Positional Arguments (passed implicitly):
+        *event* is a pygame ``VIDEORESIZE`` event. it contains the event 
+        attributes ``size``, ``w``, and ``h``.
 
-        event       A pygame VIDEORESIZE event. Contains the attributes:
+        *event.size* is a 2-tuple of integers representing the width and height
+        of the screen.
 
-          size      A 2-tuple of integers representing the width and height
-                    of the screen.
+        *event.w* is an integer representing the width of the screen.
 
-          w         An integer representing the width of the screen.
-
-          h         An integer representing the height of the screen.
+        *event.h* is an integer representing the height of the screen.
 
         This method is not predefined.
         """
@@ -289,23 +263,9 @@ class Game(object):
         pass
 
     def add_object(self, other):
-        """Add an object to the Game.
-
-        Positional Arguments:
-
-        other   The object to add to the game. The object must either be a
-                pygtails.GameObject or implement a specific list of functions
-                and attributes.
-
-        Post Conditions:
-
-        returns         The object id
-
-        side-effects    Adds an the given object to the Games inner list of
-                        objects. Changes the game's inner current id.
-        """
+        """Add a GameObject ``other`` to the Game and return its id."""
         # TODO: provide full documentation for the functions and attributes
-        #       to implement
+        #       to implement if not GameObject
 
         obj_id = self.cur_id
         self._objects[obj_id] = obj
@@ -323,15 +283,10 @@ class Game(object):
             if _id in D: del D[_id]
 
     def key_is_pressed(self, key):
-        """Determine if a key is pressed.
+        """Return True if a key is pressed, False if not.
 
-        Positional Arguments:
-
-        key     A pygame key constant (pygame.locals variable starting with K\_)
-
-        Postconditions:
-
-        returns True if the specified key is pressed, False if not.
+        *key* is pygame keycode.
+        For a full list of keycodes, see :ref:`Pygame Keycodes`.
         """
         return self._keys_pressed[key]
 

@@ -47,34 +47,30 @@
     
     <span class="sd">&quot;&quot;&quot;A class that handles pygame events, input, and mouse-collision.</span>
 
-<span class="sd">    Pubic Methods:</span>
+<span class="sd">    Public Methods:</span>
 
-<span class="sd">    main, quit, on_focus, on_key_down, on_key_up, on_mouse_move, on_mouse_up,</span>
-<span class="sd">    on_mouse_down, on_resize, update, add_object, destroy_object, key_is_pressed</span>
+<span class="sd">        | main, quit, on_focus, on_key_down, on_key_up, on_mouse_move,</span>
+<span class="sd">        | on_mouse_up, on_mouse_down, on_resize, update, add_object,</span>
+<span class="sd">        | destroy_object, key_is_pressed</span>
 
 <span class="sd">    Instance variables:</span>
 
-<span class="sd">    screen</span>
+<span class="sd">        | screen</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a new game with a blank window.</span>
 <span class="sd">        </span>
-<span class="sd">        Positional Arguments:</span>
+<span class="sd">        *resolution* is a 2-tuple of integers that specify the width and height</span>
+<span class="sd">        of the screen.</span>
 
-<span class="sd">        resolution      A 2-tuple of integers specifying the width and</span>
-<span class="sd">                        height of the screen.</span>
-
-<span class="sd">        title           A string that will be used as the title of the</span>
-<span class="sd">                        window.</span>
+<span class="sd">        *title* is a string used as the title of the window.</span>
 <span class="sd">        </span>
-<span class="sd">        Keyword Arguments:</span>
-
-<span class="sd">        flags           An integer value representing the the diferent</span>
-<span class="sd">                        controls over the display mode. For more detailed</span>
-<span class="sd">                        information, see the module documentation on pygame</span>
-<span class="sd">                        display mode flags.</span>
+<span class="sd">        *flags* is an integer flag representing the different controls over the</span>
+<span class="sd">        display mode that are active. For a full list of the different flags,</span>
+<span class="sd">        see :ref:`Pygame Display Mode Flags`. For more information on how flags</span>
+<span class="sd">        work, see :doc:`the Flags tutorial &lt;flag-tut&gt;`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">_screen</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">resolution</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
@@ -88,7 +84,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_keys_pressed</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="p">{</span><span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>            <span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">,</span>
-                        <span class="n">pygame</span><span class="o">.</span><span class="n">ACTIVEEVENT</span><span class="p">:</span>      <span class="bp">self</span><span class="o">.</span><span class="n">on_focus</span><span class="p">,</span>
+                        <span class="n">pygame</span><span class="o">.</span><span class="n">ACTIVEEVENT</span><span class="p">:</span>     <span class="bp">self</span><span class="o">.</span><span class="n">on_focus</span><span class="p">,</span>
                         <span class="n">pygame</span><span class="o">.</span><span class="n">KEYDOWN</span><span class="p">:</span>         <span class="bp">self</span><span class="o">.</span><span class="n">on_key_down</span><span class="p">,</span>
                         <span class="n">pygame</span><span class="o">.</span><span class="n">KEYUP</span><span class="p">:</span>           <span class="bp">self</span><span class="o">.</span><span class="n">on_key_up</span><span class="p">,</span>
                         <span class="n">pygame</span><span class="o">.</span><span class="n">MOUSEMOTION</span><span class="p">:</span>     <span class="bp">self</span><span class="o">.</span><span class="n">on_mouse_move</span><span class="p">,</span>
@@ -119,14 +115,12 @@
 <div class="viewcode-block" id="Game.quit"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The method called when the exit button is pressed.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
-
-<span class="sd">        event   A pygame QUIT event. Has no event attributes.</span>
+<span class="sd">        *event* is a pygame ``QUIT`` event. It has no event attributes.</span>
 <span class="sd">        </span>
-<span class="sd">        This method is predefined as</span>
+<span class="sd">        This method is predefined as::</span>
 <span class="sd">        </span>
-<span class="sd">        pygame.quit()</span>
-<span class="sd">        sys.exit()</span>
+<span class="sd">            pygame.quit()</span>
+<span class="sd">            sys.exit()</span>
 <span class="sd">        </span>
 <span class="sd">        Redefine it if you need more control.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -134,20 +128,18 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Game.on_focus"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_focus">[docs]</a>    <span class="k">def</span> <span class="nf">on_focus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method is called whenever the game window loses or gains focus.</span>
+        <span class="sd">&quot;&quot;&quot;This method is called whenever the window loses or gains focus.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``ACTIVEEVENT`` event. It contains the event</span>
+<span class="sd">        attributes ``gain`` and ``state``.</span>
 
-<span class="sd">        event       A pygame ACTIVEEVENT event. Contains event attributes:</span>
+<span class="sd">        *event.gain* is an integer. It has a value of 1 when the window comes</span>
+<span class="sd">        into focus or when the mouse enters the window. It has a value of 0</span>
+<span class="sd">        when the window goes out of focus or when the mouse leaves the window.</span>
 
-<span class="sd">          gain      An integer. Has a value of 1 when the window comes</span>
-<span class="sd">                    into focus or when the mouse enters the window. Has a</span>
-<span class="sd">                    value of 0 when the window goes out of focus or when the</span>
-<span class="sd">                    mouse leaves the window.</span>
-
-<span class="sd">          state     An integer. Has a value of 1 when the mouse exits or</span>
-<span class="sd">                    leaves the window. Has a value of 2 when the window</span>
-<span class="sd">                    gains or loses focus.</span>
+<span class="sd">        *event.state* is an integer. It has a value of 1 when the mouse exits or</span>
+<span class="sd">        leaves the window. It has a value of 2 when the window gains or loses</span>
+<span class="sd">        focus.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
@@ -156,24 +148,17 @@
 <div class="viewcode-block" id="Game.on_key_down"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_key_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a key is pressed.</span>
 <span class="sd">        </span>
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``KEYDOWN`` event. It contains the event</span>
+<span class="sd">        attributes ``unicode``, ``key``, and ``mod``.</span>
 
-<span class="sd">        event       A pygame KEYDOWN event. contains the event attributes:</span>
+<span class="sd">        *event.unicode* is the unicode representation of the key being pressed.</span>
 
-<span class="sd">          unicode   The unicode value that was pressed.</span>
+<span class="sd">        *event.key* is a pygame keycode representing the key being pressed.</span>
+<span class="sd">        For a full list key constants, see :ref:`Pygame Keycodes`.</span>
 
-<span class="sd">          key       An integer value represinting the key being pressed. The</span>
-<span class="sd">                    corresponding character is defined by pygame.locals</span>
-<span class="sd">                    variables prefaced with K\_. For a more in-depth</span>
-<span class="sd">                    explanation of these, see the pygame documentation</span>
-<span class="sd">                    section for pygame keycodes.</span>
-
-<span class="sd">          mod       An integer flag value representing the total &quot;modulation&quot;</span>
-<span class="sd">                    (shift, ctrl, alt, etc.) keys being pressed when the</span>
-<span class="sd">                    current key was pressed. The possible flags are defined by</span>
-<span class="sd">                    pygame.locals variables prefaced with KMOD\_. For more in-</span>
-<span class="sd">                    depth explanation of these, see the module documentation</span>
-<span class="sd">                    for pygame key mod flags.</span>
+<span class="sd">        *event.mod* is a pygame key mod flag representing the &quot;modulating&quot;</span>
+<span class="sd">        keys (shift, ctrl, alt, etc.) being pressed when the current key was</span>
+<span class="sd">        pressed. For a list of these flags, see :ref:`Pygame Key Mod Flags`.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
@@ -182,21 +167,15 @@
 <div class="viewcode-block" id="Game.on_key_up"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_key_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a key is released.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``KEYUP`` event. It contains the event attributes</span>
+<span class="sd">        ``key`` and ``mod``.</span>
 
-<span class="sd">        event   A pygame KEYUP event. contains the event attributes:</span>
+<span class="sd">        *event.key* is a pygame keycode representing the key being released.</span>
+<span class="sd">        For a full list key constants, see :ref:`Pygame Keycodes`.</span>
 
-<span class="sd">          key   An integer value representing the key being released. The</span>
-<span class="sd">                corresponding character is defined by pygame.locals variables</span>
-<span class="sd">                prefaced with K\_. For more in-depth explanation of these, see</span>
-<span class="sd">                th module documentation for pygame keycodes.</span>
-
-<span class="sd">          mod   An integer flag value representing the total &quot;modulation&quot;</span>
-<span class="sd">                (shit, ctrl, alt, etc.) keys being pressed when the current</span>
-<span class="sd">                key was released. The possible flags are defined by</span>
-<span class="sd">                pygame.locals variables prefaced with KMOD\_. For a more in-</span>
-<span class="sd">                depth explanation of thses, see the module documentation for</span>
-<span class="sd">                pygame key mod flags.</span>
+<span class="sd">        *event.mod* is a pygame key mod flag representing the &quot;modulating&quot; keys</span>
+<span class="sd">        (shift, ctrl, alt, etc.) pressed when the current key was released.</span>
+<span class="sd">        For a full list of these flags, see :ref:`Pygame Key Mod Flags`.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
@@ -205,21 +184,19 @@
 <div class="viewcode-block" id="Game.on_mouse_move"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_move">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the mouse is moved.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
-
-<span class="sd">        event       A pygame MOUSEMOTION event. Contains the event attributes:</span>
+<span class="sd">        *event* is a pygame ``MOUSEMOTION`` event. It contains the event</span>
+<span class="sd">        attributes ``pos``, ``rel``, and ``buttons``.</span>
 <span class="sd">          </span>
-<span class="sd">          pos       A 2-tuple of integers representing the x and y coordinates</span>
-<span class="sd">                    of the mouse.</span>
+<span class="sd">        *event.pos* is a 2-tuple of integers representing the x and y</span>
+<span class="sd">        coordinates of the mouse.</span>
 
-<span class="sd">          rel       A 2-tuple of integers representing the change in x and y</span>
-<span class="sd">                    since the last time this function was called.</span>
+<span class="sd">        *event.rel* is a 2-tuple of integers representing the change in x and y</span>
+<span class="sd">        coordinates since the last time this function was called.</span>
 
-<span class="sd">          buttons   A 3-tuple of integers representing the amount of mouse</span>
-<span class="sd">                    buttons being pressed. Index 0 represents the left mouse</span>
-<span class="sd">                    button, 1 represents the middle mouse button, 2 represents</span>
-<span class="sd">                    the right mouse button. If the mouse button is down, the</span>
-<span class="sd">                    value is 1, 0 if it&#39;s up.</span>
+<span class="sd">        *event.buttons* is a 3-tuple of integers representing the amount of</span>
+<span class="sd">        mouse buttons being pressed. Index 0 represents the left mouse button,</span>
+<span class="sd">        1 represents the middle mouse button, 2 represents the right mouse</span>
+<span class="sd">        button. If the mouse button is down, the value is 1, 0 if it&#39;s up.</span>
 
 <span class="sd">        This method is predefined to implement the on_mouse_[enter, exit, drag]</span>
 <span class="sd">        functions.</span>
@@ -247,16 +224,15 @@
 <div class="viewcode-block" id="Game.on_mouse_up"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a mouse button is released.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``MOUSEBUTTONUP`` event. It contains the event</span>
+<span class="sd">        attributes ``pos`` and ``button``.</span>
 
-<span class="sd">        event       A pygame MOUSEBUTTONUP event. Contains the attributes:</span>
+<span class="sd">        *event.pos* is a 2-tuple of integers representing the x and y</span>
+<span class="sd">        coordinates of the mouse when it was released.</span>
 
-<span class="sd">          pos       A 2-tuple of integers representing the x and y coordinates</span>
-<span class="sd">                    of the mouse when it was released.</span>
-
-<span class="sd">          button    An integer representing the button being released. 1</span>
-<span class="sd">                    represents the left mouse button, 2 represents the middle</span>
-<span class="sd">                    mouse button, and 3 represents the right mouse button.</span>
+<span class="sd">        *event.button* is an integer representing the button being released. 1</span>
+<span class="sd">        represents the left mouse button, 2 represents the middle mouse button,</span>
+<span class="sd">        and 3 represents the right mouse button.</span>
 
 <span class="sd">        This method is predefined to implement the GameObject.on_mouse_up</span>
 <span class="sd">        method and to update internal data about whether or not an object is</span>
@@ -273,16 +249,15 @@
 <div class="viewcode-block" id="Game.on_mouse_down"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a mouse button is pressed.</span>
 
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``MOUSEBUTTONDOWN`` event. It contains the event</span>
+<span class="sd">        attributes ``pos`` and ``button``.</span>
 
-<span class="sd">        event       A pygame MOUSEBUTTONDOWN event. Contains the attributes:</span>
+<span class="sd">        *event.pos* is a 2-tuple of integers representing the x and y</span>
+<span class="sd">        coordinates of the mouse when it was released.</span>
 
-<span class="sd">          pos       A 2-tuple of integers representing the x and y coordinates</span>
-<span class="sd">                    of the mouse when it was pressed.</span>
-
-<span class="sd">          button    An integer representing the button being pressed. 1</span>
-<span class="sd">                    represents the left mouse button, 2 represents the middle</span>
-<span class="sd">                    mouse button, and 3 represents the right mouse button.</span>
+<span class="sd">        *event.button* is an integer representing the button being pressed. 1</span>
+<span class="sd">        represents the left mouse button, 2 represents the middle mouse button,</span>
+<span class="sd">        and 3 represents the right mouse button.</span>
 
 <span class="sd">        This method is predefined to implement the GameObject.on_mouse_down</span>
 <span class="sd">        method and to update internal data bout whether or not an object is</span>
@@ -299,16 +274,15 @@
 <div class="viewcode-block" id="Game.on_resize"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_resize">[docs]</a>    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the window is resized.</span>
 <span class="sd">        </span>
-<span class="sd">        Positional Arguments (passed implicitly):</span>
+<span class="sd">        *event* is a pygame ``VIDEORESIZE`` event. it contains the event </span>
+<span class="sd">        attributes ``size``, ``w``, and ``h``.</span>
 
-<span class="sd">        event       A pygame VIDEORESIZE event. Contains the attributes:</span>
+<span class="sd">        *event.size* is a 2-tuple of integers representing the width and height</span>
+<span class="sd">        of the screen.</span>
 
-<span class="sd">          size      A 2-tuple of integers representing the width and height</span>
-<span class="sd">                    of the screen.</span>
+<span class="sd">        *event.w* is an integer representing the width of the screen.</span>
 
-<span class="sd">          w         An integer representing the width of the screen.</span>
-
-<span class="sd">          h         An integer representing the height of the screen.</span>
+<span class="sd">        *event.h* is an integer representing the height of the screen.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
@@ -322,23 +296,9 @@
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="Game.add_object"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.add_object">[docs]</a>    <span class="k">def</span> <span class="nf">add_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add an object to the Game.</span>
-
-<span class="sd">        Positional Arguments:</span>
-
-<span class="sd">        other   The object to add to the game. The object must either be a</span>
-<span class="sd">                pygtails.GameObject or implement a specific list of functions</span>
-<span class="sd">                and attributes.</span>
-
-<span class="sd">        Post Conditions:</span>
-
-<span class="sd">        returns         The object id</span>
-
-<span class="sd">        side-effects    Adds an the given object to the Games inner list of</span>
-<span class="sd">                        objects. Changes the game&#39;s inner current id.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Add a GameObject ``other`` to the Game and return its id.&quot;&quot;&quot;</span>
         <span class="c1"># TODO: provide full documentation for the functions and attributes</span>
-        <span class="c1">#       to implement</span>
+        <span class="c1">#       to implement if not GameObject</span>
 
         <span class="n">obj_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">[</span><span class="n">obj_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
@@ -356,15 +316,10 @@
             <span class="k">if</span> <span class="n">_id</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span> <span class="k">del</span> <span class="n">D</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Game.key_is_pressed"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.key_is_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">key_is_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determine if a key is pressed.</span>
+        <span class="sd">&quot;&quot;&quot;Return True if a key is pressed, False if not.</span>
 
-<span class="sd">        Positional Arguments:</span>
-
-<span class="sd">        key     A pygame key constant (pygame.locals variable starting with K\_)</span>
-
-<span class="sd">        Postconditions:</span>
-
-<span class="sd">        returns True if the specified key is pressed, False if not.</span>
+<span class="sd">        *key* is pygame keycode.</span>
+<span class="sd">        For a full list of keycodes, see :ref:`Pygame Keycodes`.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keys_pressed</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 

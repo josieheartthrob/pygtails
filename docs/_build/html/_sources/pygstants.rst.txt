@@ -1,11 +1,12 @@
+================
 Pygame Constants
 ================
 
 One of the reasons I decided to create this little library is because I feel that pygame isn't very well documented. Part of this is attributed to poor organization (in my opinion) of documentation of related data types and functions. This documentation aims to remedy that by putting the documentation in a visible spot to be easy to reference.
 
 
-Keycodes
---------
+Pygame Keycodes
+===============
 
 The following table is almost directly taken from the `pygame.key documentation`_.
 
@@ -145,8 +146,8 @@ K_POWER                 power
 K_EURO                  euro
 ==============  =====   ===================
 
-Key Mod Flags
--------------
+Pygame Key Mod Flags
+====================
 
 The following table is interpreted from the `pygame.key documentation`_. Descriptions left blank are Key Mod Flags that are unclear, and I haven't been able to determine what they do.
 
@@ -173,8 +174,8 @@ KMOD_NUM        Num Lock
 KMOD_MODE
 ============    =============
 
-Display Mode Flags
-------------------
+Pygame Display Mode Flags
+=========================
 
 The following table is taken almost directly from the `pygame.display documentation`_.
 
