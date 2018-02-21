@@ -1,0 +1,747 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pygame Constants &#8212; pygtails  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="A Quick Primer on Flags" href="flag-tut.html" />
+    <link rel="prev" title="Hello, Pygtails!" href="hello.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pygame-constants">
+<h1>Pygame Constants<a class="headerlink" href="#pygame-constants" title="Permalink to this headline">¶</a></h1>
+<p>One of the reasons I decided to create this little library is because I feel that pygame isn’t very well documented. Part of this is attributed to poor organization (in my opinion) of documentation of related data types and functions. This documentation aims to remedy that by putting the documentation in a visible spot to be easy to reference.</p>
+<div class="section" id="keycodes">
+<h2>Keycodes<a class="headerlink" href="#keycodes" title="Permalink to this headline">¶</a></h2>
+<p>The following table is almost directly taken from the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html/">pygame.key documentation</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="12%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keycode Name</th>
+<th class="head">Ascii</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>K_BACKSPACE</td>
+<td>\b</td>
+<td>backspace</td>
+</tr>
+<tr class="row-odd"><td>K_TAB</td>
+<td>\t</td>
+<td>tab</td>
+</tr>
+<tr class="row-even"><td>K_CLEAR</td>
+<td>&#160;</td>
+<td>clear</td>
+</tr>
+<tr class="row-odd"><td>K_RETURN</td>
+<td>\r</td>
+<td>return</td>
+</tr>
+<tr class="row-even"><td>K_PAUSE</td>
+<td>&#160;</td>
+<td>pause</td>
+</tr>
+<tr class="row-odd"><td>K_ESCAPE</td>
+<td>^[</td>
+<td>escape</td>
+</tr>
+<tr class="row-even"><td>K_SPACE</td>
+<td>&#160;</td>
+<td>space</td>
+</tr>
+<tr class="row-odd"><td>K_EXCLAIM</td>
+<td>!</td>
+<td>exlclamation point</td>
+</tr>
+<tr class="row-even"><td>K_QUOTEDBL</td>
+<td>“</td>
+<td>double quote</td>
+</tr>
+<tr class="row-odd"><td>K_HASH</td>
+<td>#</td>
+<td>hashtag</td>
+</tr>
+<tr class="row-even"><td>K_DOLLAR</td>
+<td>$</td>
+<td>dollar sign</td>
+</tr>
+<tr class="row-odd"><td>K_AMPERSAND</td>
+<td>&amp;</td>
+<td>ampersand</td>
+</tr>
+<tr class="row-even"><td>K_QUOTE</td>
+<td>‘</td>
+<td>single quote</td>
+</tr>
+<tr class="row-odd"><td>K_LEFTPAREN</td>
+<td>(</td>
+<td>opening parenthesis</td>
+</tr>
+<tr class="row-even"><td>K_RIGHTPAREN</td>
+<td>)</td>
+<td>closing parenthesis</td>
+</tr>
+<tr class="row-odd"><td>K_ASTERISK</td>
+<td>*</td>
+<td>asterisk</td>
+</tr>
+<tr class="row-even"><td>K_PLUS</td>
+<td>+</td>
+<td>plus</td>
+</tr>
+<tr class="row-odd"><td>K_COMMA</td>
+<td>,</td>
+<td>comma</td>
+</tr>
+<tr class="row-even"><td>K_MINUS</td>
+<td>-</td>
+<td>hyphen</td>
+</tr>
+<tr class="row-odd"><td>K_PERIOD</td>
+<td>.</td>
+<td>period</td>
+</tr>
+<tr class="row-even"><td>K_SLASH</td>
+<td>/</td>
+<td>forward slash</td>
+</tr>
+<tr class="row-odd"><td>K_0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>K_1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>K_2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>K_3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="row-odd"><td>K_4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>K_5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>K_6</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="row-even"><td>K_7</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="row-odd"><td>K_8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr class="row-even"><td>K_9</td>
+<td>9</td>
+<td>9</td>
+</tr>
+<tr class="row-odd"><td>K_COLON</td>
+<td>:</td>
+<td>colon</td>
+</tr>
+<tr class="row-even"><td>K_SEMICOLON</td>
+<td>;</td>
+<td>semicolon</td>
+</tr>
+<tr class="row-odd"><td>K_LESS</td>
+<td>&lt;</td>
+<td>less-than</td>
+</tr>
+<tr class="row-even"><td>K_EQUALS</td>
+<td>=</td>
+<td>equals</td>
+</tr>
+<tr class="row-odd"><td>K_GREATER</td>
+<td>&gt;</td>
+<td>greater-than</td>
+</tr>
+<tr class="row-even"><td>K_QUESTION</td>
+<td>?</td>
+<td>question mark</td>
+</tr>
+<tr class="row-odd"><td>K_AT</td>
+<td>&#64;</td>
+<td>at sign</td>
+</tr>
+<tr class="row-even"><td>K_LEFTBRACKET</td>
+<td>[</td>
+<td>opening sqaure bracket</td>
+</tr>
+<tr class="row-odd"><td>K_BACKSLASH</td>
+<td>\</td>
+<td>backslash</td>
+</tr>
+<tr class="row-even"><td>K_RIGHTBRACKET</td>
+<td>]</td>
+<td>closing right bracket</td>
+</tr>
+<tr class="row-odd"><td>K_CARET</td>
+<td>^</td>
+<td>caret</td>
+</tr>
+<tr class="row-even"><td>K_UNDERSCORE</td>
+<td>_</td>
+<td>underscore</td>
+</tr>
+<tr class="row-odd"><td>K_BACKQUOTE</td>
+<td>`</td>
+<td>backtick</td>
+</tr>
+<tr class="row-even"><td>K_a</td>
+<td>a</td>
+<td>a</td>
+</tr>
+<tr class="row-odd"><td>K_b</td>
+<td>b</td>
+<td>b</td>
+</tr>
+<tr class="row-even"><td>K_c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr class="row-odd"><td>K_d</td>
+<td>d</td>
+<td>d</td>
+</tr>
+<tr class="row-even"><td>K_e</td>
+<td>e</td>
+<td>e</td>
+</tr>
+<tr class="row-odd"><td>K_f</td>
+<td>f</td>
+<td>f</td>
+</tr>
+<tr class="row-even"><td>K_g</td>
+<td>g</td>
+<td>g</td>
+</tr>
+<tr class="row-odd"><td>K_h</td>
+<td>h</td>
+<td>h</td>
+</tr>
+<tr class="row-even"><td>K_i</td>
+<td>i</td>
+<td>i</td>
+</tr>
+<tr class="row-odd"><td>K_j</td>
+<td>j</td>
+<td>j</td>
+</tr>
+<tr class="row-even"><td>K_k</td>
+<td>k</td>
+<td>k</td>
+</tr>
+<tr class="row-odd"><td>K_l</td>
+<td>l</td>
+<td>l</td>
+</tr>
+<tr class="row-even"><td>K_m</td>
+<td>m</td>
+<td>m</td>
+</tr>
+<tr class="row-odd"><td>K_n</td>
+<td>n</td>
+<td>n</td>
+</tr>
+<tr class="row-even"><td>K_o</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr class="row-odd"><td>K_p</td>
+<td>p</td>
+<td>p</td>
+</tr>
+<tr class="row-even"><td>K_q</td>
+<td>q</td>
+<td>q</td>
+</tr>
+<tr class="row-odd"><td>K_r</td>
+<td>r</td>
+<td>r</td>
+</tr>
+<tr class="row-even"><td>K_s</td>
+<td>s</td>
+<td>s</td>
+</tr>
+<tr class="row-odd"><td>K_t</td>
+<td>t</td>
+<td>t</td>
+</tr>
+<tr class="row-even"><td>K_u</td>
+<td>u</td>
+<td>u</td>
+</tr>
+<tr class="row-odd"><td>K_v</td>
+<td>v</td>
+<td>v</td>
+</tr>
+<tr class="row-even"><td>K_w</td>
+<td>w</td>
+<td>w</td>
+</tr>
+<tr class="row-odd"><td>K_x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="row-even"><td>K_y</td>
+<td>y</td>
+<td>y</td>
+</tr>
+<tr class="row-odd"><td>K_z</td>
+<td>z</td>
+<td>z</td>
+</tr>
+<tr class="row-even"><td>K_DELETE</td>
+<td>&#160;</td>
+<td>delete</td>
+</tr>
+<tr class="row-odd"><td>K_KP0</td>
+<td>&#160;</td>
+<td>numpad 0</td>
+</tr>
+<tr class="row-even"><td>K_KP1</td>
+<td>&#160;</td>
+<td>numpad 1</td>
+</tr>
+<tr class="row-odd"><td>K_KP2</td>
+<td>&#160;</td>
+<td>numpad 2</td>
+</tr>
+<tr class="row-even"><td>K_KP3</td>
+<td>&#160;</td>
+<td>numpad 3</td>
+</tr>
+<tr class="row-odd"><td>K_KP4</td>
+<td>&#160;</td>
+<td>numpad 4</td>
+</tr>
+<tr class="row-even"><td>K_KP5</td>
+<td>&#160;</td>
+<td>numpad 5</td>
+</tr>
+<tr class="row-odd"><td>K_KP6</td>
+<td>&#160;</td>
+<td>numpad 6</td>
+</tr>
+<tr class="row-even"><td>K_KP7</td>
+<td>&#160;</td>
+<td>numpad 7</td>
+</tr>
+<tr class="row-odd"><td>K_KP8</td>
+<td>&#160;</td>
+<td>numpad 8</td>
+</tr>
+<tr class="row-even"><td>K_KP9</td>
+<td>&#160;</td>
+<td>numpad 9</td>
+</tr>
+<tr class="row-odd"><td>K_KP_PERIOD</td>
+<td>.</td>
+<td>numpad period</td>
+</tr>
+<tr class="row-even"><td>K_KP_DIVIDE</td>
+<td>/</td>
+<td>numpad divide</td>
+</tr>
+<tr class="row-odd"><td>K_KP_MULTIPLY</td>
+<td>*</td>
+<td>numpad multiply</td>
+</tr>
+<tr class="row-even"><td>K_KP_MINUS</td>
+<td>-</td>
+<td>numpad minus</td>
+</tr>
+<tr class="row-odd"><td>K_KP_PLUS</td>
+<td>+</td>
+<td>numpad plus</td>
+</tr>
+<tr class="row-even"><td>K_KP_ENTER</td>
+<td>\r</td>
+<td>numpad enter</td>
+</tr>
+<tr class="row-odd"><td>K_KP_EQUALS</td>
+<td>=</td>
+<td>numpad equals</td>
+</tr>
+<tr class="row-even"><td>K_UP</td>
+<td>&#160;</td>
+<td>up arrow</td>
+</tr>
+<tr class="row-odd"><td>K_DOWN</td>
+<td>&#160;</td>
+<td>down arrow</td>
+</tr>
+<tr class="row-even"><td>K_RIGHT</td>
+<td>&#160;</td>
+<td>right arrow</td>
+</tr>
+<tr class="row-odd"><td>K_LEFT</td>
+<td>&#160;</td>
+<td>left arrow</td>
+</tr>
+<tr class="row-even"><td>K_INSERT</td>
+<td>&#160;</td>
+<td>insert</td>
+</tr>
+<tr class="row-odd"><td>K_HOME</td>
+<td>&#160;</td>
+<td>home</td>
+</tr>
+<tr class="row-even"><td>K_END</td>
+<td>&#160;</td>
+<td>end</td>
+</tr>
+<tr class="row-odd"><td>K_PAGEUP</td>
+<td>&#160;</td>
+<td>page up</td>
+</tr>
+<tr class="row-even"><td>K_PAGEDOWN</td>
+<td>&#160;</td>
+<td>page down</td>
+</tr>
+<tr class="row-odd"><td>K_F1</td>
+<td>&#160;</td>
+<td>F1</td>
+</tr>
+<tr class="row-even"><td>K_F3</td>
+<td>&#160;</td>
+<td>F3</td>
+</tr>
+<tr class="row-odd"><td>K_F4</td>
+<td>&#160;</td>
+<td>F4</td>
+</tr>
+<tr class="row-even"><td>K_F5</td>
+<td>&#160;</td>
+<td>F5</td>
+</tr>
+<tr class="row-odd"><td>K_F6</td>
+<td>&#160;</td>
+<td>F6</td>
+</tr>
+<tr class="row-even"><td>K_F7</td>
+<td>&#160;</td>
+<td>F8</td>
+</tr>
+<tr class="row-odd"><td>K_F9</td>
+<td>&#160;</td>
+<td>F9</td>
+</tr>
+<tr class="row-even"><td>K_F10</td>
+<td>&#160;</td>
+<td>F10</td>
+</tr>
+<tr class="row-odd"><td>K_F11</td>
+<td>&#160;</td>
+<td>F11</td>
+</tr>
+<tr class="row-even"><td>K_F12</td>
+<td>&#160;</td>
+<td>F12</td>
+</tr>
+<tr class="row-odd"><td>K_F13</td>
+<td>&#160;</td>
+<td>F13</td>
+</tr>
+<tr class="row-even"><td>K_F14</td>
+<td>&#160;</td>
+<td>F14</td>
+</tr>
+<tr class="row-odd"><td>K_F15</td>
+<td>&#160;</td>
+<td>F15</td>
+</tr>
+<tr class="row-even"><td>K_NUMLOCK</td>
+<td>&#160;</td>
+<td>num lock</td>
+</tr>
+<tr class="row-odd"><td>K_CAPSLOCK</td>
+<td>&#160;</td>
+<td>caps lock</td>
+</tr>
+<tr class="row-even"><td>K_SCROLLOCK</td>
+<td>&#160;</td>
+<td>scroll lock</td>
+</tr>
+<tr class="row-odd"><td>K_RSHIFT</td>
+<td>&#160;</td>
+<td>right shift</td>
+</tr>
+<tr class="row-even"><td>K_LSHIFT</td>
+<td>&#160;</td>
+<td>left shift</td>
+</tr>
+<tr class="row-odd"><td>K_RCTRL</td>
+<td>&#160;</td>
+<td>right control</td>
+</tr>
+<tr class="row-even"><td>K_LCTRL</td>
+<td>&#160;</td>
+<td>left control</td>
+</tr>
+<tr class="row-odd"><td>K_RALT</td>
+<td>&#160;</td>
+<td>right alt</td>
+</tr>
+<tr class="row-even"><td>K_LALT</td>
+<td>&#160;</td>
+<td>left alt</td>
+</tr>
+<tr class="row-odd"><td>K_RMETA</td>
+<td>&#160;</td>
+<td>right meta</td>
+</tr>
+<tr class="row-even"><td>K_LMETA</td>
+<td>&#160;</td>
+<td>left meta</td>
+</tr>
+<tr class="row-odd"><td>K_LSUPER</td>
+<td>&#160;</td>
+<td>left “windows” key</td>
+</tr>
+<tr class="row-even"><td>K_RSUPER</td>
+<td>&#160;</td>
+<td>right “windows” key</td>
+</tr>
+<tr class="row-odd"><td>K_MODE</td>
+<td>&#160;</td>
+<td>mode shift</td>
+</tr>
+<tr class="row-even"><td>K_HELP</td>
+<td>&#160;</td>
+<td>help</td>
+</tr>
+<tr class="row-odd"><td>K_PRINT</td>
+<td>&#160;</td>
+<td>print screen</td>
+</tr>
+<tr class="row-even"><td>K_SYSREQ</td>
+<td>&#160;</td>
+<td>sysrq</td>
+</tr>
+<tr class="row-odd"><td>K_BREAK</td>
+<td>&#160;</td>
+<td>break</td>
+</tr>
+<tr class="row-even"><td>K_MENU</td>
+<td>&#160;</td>
+<td>menu</td>
+</tr>
+<tr class="row-odd"><td>K_POWER</td>
+<td>&#160;</td>
+<td>power</td>
+</tr>
+<tr class="row-even"><td>K_EURO</td>
+<td>&#160;</td>
+<td>euro</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="key-mod-flags">
+<h2>Key Mod Flags<a class="headerlink" href="#key-mod-flags" title="Permalink to this headline">¶</a></h2>
+<p>The following table is interpreted from the <a class="reference external" href="https://www.pygame.org/docs/ref/key.html/">pygame.key documentation</a>. Descriptions left blank are Key Mod Flags that are unclear, and I haven’t been able to determine what they do.</p>
+<p>Key Mod descriptions prefaced with “Both” shouldn’t be confused with “either”</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key Mod Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>KMOD_NONE</td>
+<td>No Key Mods</td>
+</tr>
+<tr class="row-odd"><td>KMOD_LSHIFT</td>
+<td>Left Shift</td>
+</tr>
+<tr class="row-even"><td>KMOD_RSHIFT</td>
+<td>Right Shift</td>
+</tr>
+<tr class="row-odd"><td>KMOD_SHIFT</td>
+<td>Both Shifts</td>
+</tr>
+<tr class="row-even"><td>KMOD_CAPS</td>
+<td>Caps Lock</td>
+</tr>
+<tr class="row-odd"><td>KMOD_LCTRL</td>
+<td>Left Control</td>
+</tr>
+<tr class="row-even"><td>KMOD_RCTRL</td>
+<td>Right Control</td>
+</tr>
+<tr class="row-odd"><td>KMOD_CTRL</td>
+<td>Both Controls</td>
+</tr>
+<tr class="row-even"><td>KMOD_LALT</td>
+<td>Left Alt</td>
+</tr>
+<tr class="row-odd"><td>KMOD_RALT</td>
+<td>Right Alt</td>
+</tr>
+<tr class="row-even"><td>KMOD_ALT</td>
+<td>Both Alts</td>
+</tr>
+<tr class="row-odd"><td>KMOD_LMETA</td>
+<td>Left Meta</td>
+</tr>
+<tr class="row-even"><td>KMOD_RMETA</td>
+<td>Right Meta</td>
+</tr>
+<tr class="row-odd"><td>KMOD_META</td>
+<td>Both Metas</td>
+</tr>
+<tr class="row-even"><td>KMOD_NUM</td>
+<td>Num Lock</td>
+</tr>
+<tr class="row-odd"><td>KMOD_MODE</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="display-mode-flags">
+<h2>Display Mode Flags<a class="headerlink" href="#display-mode-flags" title="Permalink to this headline">¶</a></h2>
+<p>The following table is taken almost directly from the <a class="reference external" href="https://www.pygame.org/docs/ref/display.html/">pygame.display documentation</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Display Mode Name</th>
+<th class="head">Descripton</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>FULLSCREEN</td>
+<td>Create a fullscreen display</td>
+</tr>
+<tr class="row-odd"><td>DOUBLEBUF</td>
+<td>Recommended for HWSURFACE or OPENGL</td>
+</tr>
+<tr class="row-even"><td>HWSURFACE</td>
+<td>Hardware-accelerate, only in FULLSCREEEN</td>
+</tr>
+<tr class="row-odd"><td>OPENGL</td>
+<td>Create an OpenGL-renderable display</td>
+</tr>
+<tr class="row-even"><td>RESIZABLE</td>
+<td>Create a resizable window</td>
+</tr>
+<tr class="row-odd"><td>NOFRAME</td>
+<td>Create window with no border or controls</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pygame Constants</a><ul>
+<li><a class="reference internal" href="#keycodes">Keycodes</a></li>
+<li><a class="reference internal" href="#key-mod-flags">Key Mod Flags</a></li>
+<li><a class="reference internal" href="#display-mode-flags">Display Mode Flags</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="hello.html" title="previous chapter">Hello, Pygtails!</a></li>
+      <li>Next: <a href="flag-tut.html" title="next chapter">A Quick Primer on Flags</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pygstants.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Josie Thompson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/pygstants.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
