@@ -43,7 +43,7 @@
 <span class="kn">from</span> <span class="nn">pygame.time</span> <span class="k">import</span> <span class="n">Clock</span>
 <span class="kn">from</span> <span class="nn">pygame.event</span> <span class="k">import</span> <span class="n">Event</span>
 
-<div class="viewcode-block" id="Game"><a class="viewcode-back" href="../pygtails.html#pygtails.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Game"><a class="viewcode-back" href="../pyglib.html#pygtails.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;A class that handles pygame events, input, and mouse-collision.</span>
 
@@ -92,7 +92,7 @@
                         <span class="n">pygame</span><span class="o">.</span><span class="n">MOUSEBUTTONDOWN</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_mouse_down</span><span class="p">,</span>
                         <span class="n">pygame</span><span class="o">.</span><span class="n">VIDEORESIZE</span><span class="p">:</span>     <span class="bp">self</span><span class="o">.</span><span class="n">on_resize</span><span class="p">}</span>
 
-<div class="viewcode-block" id="Game.main"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.main"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.main">[docs]</a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The main loop. Call this to run the game.&quot;&quot;&quot;</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
@@ -112,7 +112,7 @@
             <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="o">.</span><span class="n">values</span><span class="p">():</span></div>
                 <span class="n">obj</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Game.quit"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.quit"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The method called when the exit button is pressed.</span>
 
 <span class="sd">        *event* is a pygame ``QUIT`` event. It has no event attributes.</span>
@@ -127,7 +127,7 @@
         <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span></div>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Game.on_focus"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_focus">[docs]</a>    <span class="k">def</span> <span class="nf">on_focus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_focus"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_focus">[docs]</a>    <span class="k">def</span> <span class="nf">on_focus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the window loses or gains focus.</span>
 
 <span class="sd">        *event* is a pygame ``ACTIVEEVENT`` event. It contains the event</span>
@@ -145,7 +145,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Game.on_key_down"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_key_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_key_down"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_key_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a key is pressed.</span>
 <span class="sd">        </span>
 <span class="sd">        *event* is a pygame ``KEYDOWN`` event. It contains the event</span>
@@ -164,7 +164,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Game.on_key_up"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_key_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_key_up"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_key_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_key_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a key is released.</span>
 
 <span class="sd">        *event* is a pygame ``KEYUP`` event. It contains the event attributes</span>
@@ -181,7 +181,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Game.on_mouse_move"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_move">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_mouse_move"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_mouse_move">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the mouse is moved.</span>
 
 <span class="sd">        *event* is a pygame ``MOUSEMOTION`` event. It contains the event</span>
@@ -221,7 +221,7 @@
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clicked</span><span class="o">.</span><span class="n">values</span><span class="p">():</span></div>
             <span class="n">obj</span><span class="o">.</span><span class="n">on_mouse_drag</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Game.on_mouse_up"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_mouse_up"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_mouse_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a mouse button is released.</span>
 
 <span class="sd">        *event* is a pygame ``MOUSEBUTTONUP`` event. It contains the event</span>
@@ -246,7 +246,7 @@
                 <span class="n">obj</span><span class="o">.</span><span class="n">on_mouse_up</span><span class="p">(</span><span class="n">event</span><span class="p">)</span></div>
             <span class="bp">self</span><span class="o">.</span><span class="n">_clicked</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Game.on_mouse_down"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_mouse_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_mouse_down"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_mouse_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever a mouse button is pressed.</span>
 
 <span class="sd">        *event* is a pygame ``MOUSEBUTTONDOWN`` event. It contains the event</span>
@@ -271,7 +271,7 @@
                 <span class="n">obj</span><span class="o">.</span><span class="n">on_mouse_down</span><span class="p">(</span><span class="n">event</span><span class="p">)</span></div>
             <span class="bp">self</span><span class="o">.</span><span class="n">_clicked</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contains_mouse</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Game.on_resize"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.on_resize">[docs]</a>    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.on_resize"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.on_resize">[docs]</a>    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the window is resized.</span>
 <span class="sd">        </span>
 <span class="sd">        *event* is a pygame ``VIDEORESIZE`` event. it contains the event </span>
@@ -288,14 +288,14 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Game.update"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.update"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called every frame.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="Game.add_object"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.add_object">[docs]</a>    <span class="k">def</span> <span class="nf">add_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.add_object"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.add_object">[docs]</a>    <span class="k">def</span> <span class="nf">add_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a GameObject ``other`` to the Game and return its id.&quot;&quot;&quot;</span>
         <span class="c1"># TODO: provide full documentation for the functions and attributes</span>
         <span class="c1">#       to implement if not GameObject</span>
@@ -305,7 +305,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cur_id</span> <span class="o">+=</span> <span class="mi">1</span></div>
         <span class="k">return</span> <span class="n">obj_id</span>
 
-<div class="viewcode-block" id="Game.destroy_object"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.destroy_object">[docs]</a>    <span class="k">def</span> <span class="nf">destroy_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_id</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.destroy_object"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.destroy_object">[docs]</a>    <span class="k">def</span> <span class="nf">destroy_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Destroys the object with the given id from the game.</span>
 
 <span class="sd">        Note: Does not &quot;undraw&quot; the object. This must be done manually (for now)</span>
@@ -315,7 +315,7 @@
             <span class="n">D</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span></div>
             <span class="k">if</span> <span class="n">_id</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span> <span class="k">del</span> <span class="n">D</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span>
 
-<div class="viewcode-block" id="Game.key_is_pressed"><a class="viewcode-back" href="../pygtails.html#pygtails.Game.key_is_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">key_is_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="Game.key_is_pressed"><a class="viewcode-back" href="../pyglib.html#pygtails.Game.key_is_pressed">[docs]</a>    <span class="k">def</span> <span class="nf">key_is_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return True if a key is pressed, False if not.</span>
 
 <span class="sd">        *key* is pygame keycode.</span>
@@ -328,7 +328,7 @@
         <span class="sd">&quot;&quot;&quot;The pygame Surface used to draw and blit images to the screen.&quot;&quot;&quot;</span></div>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_screen</span>
 
-<div class="viewcode-block" id="GameObject"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject">[docs]</a><span class="k">class</span> <span class="nc">GameObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject">[docs]</a><span class="k">class</span> <span class="nc">GameObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;A simple class to make game development with pygame more intuitive.</span>
 
@@ -361,7 +361,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">add_object</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="GameObject.is_colliding_with"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.is_colliding_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_colliding_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.is_colliding_with"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.is_colliding_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_colliding_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return true if other is colliding with this object.</span>
 
 <span class="sd">        Positional Arguments:</span>
@@ -381,14 +381,14 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.update"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.update"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called every frame.</span>
 
 <span class="sd">        This method is not predefined.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_enter"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_enter">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_enter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_enter"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_enter">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_enter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the mouse enters this object.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -411,7 +411,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_exit"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_exit">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_exit"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_exit">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called whenever the mouse exits this object.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -434,7 +434,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_stay"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_stay">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_stay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_stay"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_stay">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_stay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called each frame the mouse is within this object.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -457,7 +457,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_down"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_down"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_down">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called when the mouse is pressed inside this object.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -475,7 +475,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_up"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_up"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_up">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called on mouse up if this object is clicked.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -493,7 +493,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.on_mouse_drag"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.on_mouse_drag">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.on_mouse_drag"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.on_mouse_drag">[docs]</a>    <span class="k">def</span> <span class="nf">on_mouse_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method is called each frame this object is dragged by the mouse.</span>
 
 <span class="sd">        Positional Arguments (passed implicitly):</span>
@@ -516,7 +516,7 @@
 <span class="sd">        &quot;&quot;&quot;</span></div>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="GameObject.move"><a class="viewcode-back" href="../pygtails.html#pygtails.GameObject.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+<div class="viewcode-block" id="GameObject.move"><a class="viewcode-back" href="../pyglib.html#pygtails.GameObject.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Move the object by the given dimensions.  </span>
 <span class="sd">        Positional Arguments:</span>
 <span class="sd">        </span>

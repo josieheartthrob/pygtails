@@ -1,0 +1,519 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pygtails Library &#8212; pygtails  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hello, Pygtails!" href="hello.html" />
+    <link rel="prev" title="Welcome to pygtails’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pygtails">
+<span id="pygtails-library"></span><h1>Pygtails Library<a class="headerlink" href="#module-pygtails" title="Permalink to this headline">¶</a></h1>
+<p>A simple wrapper around pygame.</p>
+<p>Game        implements engine functionality. Subclass to build games.
+GameObject  A simple class to provide a more intuitive approach to gamedev.</p>
+<div class="section" id="game">
+<h2>Game<a class="headerlink" href="#game" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pygtails.Game">
+<em class="property">class </em><code class="descclassname">pygtails.</code><code class="descname">Game</code><span class="sig-paren">(</span><em>resolution</em>, <em>title</em>, <em>flags=0</em>, <em>depth=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that handles pygame events, input, and mouse-collision.</p>
+<p>Public Methods:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">main, quit, on_focus, on_key_down, on_key_up, on_mouse_move,</div>
+<div class="line">on_mouse_up, on_mouse_down, on_resize, update, add_object,</div>
+<div class="line">destroy_object, key_is_pressed</div>
+</div>
+</div></blockquote>
+<p>Instance variables:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">screen</div>
+</div>
+</div></blockquote>
+<p>Create a new game with a blank window.</p>
+<p><em>resolution</em> is a 2-tuple of integers that specify the width and height
+of the screen.</p>
+<p><em>title</em> is a string used as the title of the window.</p>
+<p><em>flags</em> is an integer flag representing the different controls over the
+display mode that are active. For a full list of the different flags,
+see <a class="reference internal" href="pygstants.html#pygame-display-mode-flags"><span class="std std-ref">Pygame Display Mode Flags</span></a>. For more information on how flags
+work, see <a class="reference internal" href="flag-tut.html"><span class="doc">the Flags tutorial</span></a>.</p>
+<dl class="method">
+<dt id="pygtails.Game.add_object">
+<code class="descname">add_object</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.add_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.add_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a GameObject <code class="docutils literal notranslate"><span class="pre">other</span></code> to the Game and return its id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.destroy_object">
+<code class="descname">destroy_object</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.destroy_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.destroy_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroys the object with the given id from the game.</p>
+<p>Note: Does not “undraw” the object. This must be done manually (for now)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.key_is_pressed">
+<code class="descname">key_is_pressed</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.key_is_pressed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.key_is_pressed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if a key is pressed, False if not.</p>
+<p><em>key</em> is pygame keycode.
+For a full list of keycodes, see <a class="reference internal" href="pygstants.html#pygame-keycodes"><span class="std std-ref">Pygame Keycodes</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main loop. Call this to run the game.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_focus">
+<code class="descname">on_focus</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_focus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_focus" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever the window loses or gains focus.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">ACTIVEEVENT</span></code> event. It contains the event
+attributes <code class="docutils literal notranslate"><span class="pre">gain</span></code> and <code class="docutils literal notranslate"><span class="pre">state</span></code>.</p>
+<p><em>event.gain</em> is an integer. It has a value of 1 when the window comes
+into focus or when the mouse enters the window. It has a value of 0
+when the window goes out of focus or when the mouse leaves the window.</p>
+<p><em>event.state</em> is an integer. It has a value of 1 when the mouse exits or
+leaves the window. It has a value of 2 when the window gains or loses
+focus.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_key_down">
+<code class="descname">on_key_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_key_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_key_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever a key is pressed.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">KEYDOWN</span></code> event. It contains the event
+attributes <code class="docutils literal notranslate"><span class="pre">unicode</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>, and <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p>
+<p><em>event.unicode</em> is the unicode representation of the key being pressed.</p>
+<p><em>event.key</em> is a pygame keycode representing the key being pressed.
+For a full list key constants, see <a class="reference internal" href="pygstants.html#pygame-keycodes"><span class="std std-ref">Pygame Keycodes</span></a>.</p>
+<p><em>event.mod</em> is a pygame key mod flag representing the “modulating”
+keys (shift, ctrl, alt, etc.) being pressed when the current key was
+pressed. For a list of these flags, see <a class="reference internal" href="pygstants.html#pygame-key-mod-flags"><span class="std std-ref">Pygame Key Mod Flags</span></a>.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_key_up">
+<code class="descname">on_key_up</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_key_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_key_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever a key is released.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">KEYUP</span></code> event. It contains the event attributes
+<code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p>
+<p><em>event.key</em> is a pygame keycode representing the key being released.
+For a full list key constants, see <a class="reference internal" href="pygstants.html#pygame-keycodes"><span class="std std-ref">Pygame Keycodes</span></a>.</p>
+<p><em>event.mod</em> is a pygame key mod flag representing the “modulating” keys
+(shift, ctrl, alt, etc.) pressed when the current key was released.
+For a full list of these flags, see <a class="reference internal" href="pygstants.html#pygame-key-mod-flags"><span class="std std-ref">Pygame Key Mod Flags</span></a>.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_mouse_down">
+<code class="descname">on_mouse_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_mouse_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_mouse_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever a mouse button is pressed.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">MOUSEBUTTONDOWN</span></code> event. It contains the event
+attributes <code class="docutils literal notranslate"><span class="pre">pos</span></code> and <code class="docutils literal notranslate"><span class="pre">button</span></code>.</p>
+<p><em>event.pos</em> is a 2-tuple of integers representing the x and y
+coordinates of the mouse when it was released.</p>
+<p><em>event.button</em> is an integer representing the button being pressed. 1
+represents the left mouse button, 2 represents the middle mouse button,
+and 3 represents the right mouse button.</p>
+<p>This method is predefined to implement the GameObject.on_mouse_down
+method and to update internal data bout whether or not an object is
+clicked.</p>
+<p>To redefine this method while keeping the implementation, call
+super().on_mouse_up(event) at the top of your function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_mouse_move">
+<code class="descname">on_mouse_move</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_mouse_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_mouse_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever the mouse is moved.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">MOUSEMOTION</span></code> event. It contains the event
+attributes <code class="docutils literal notranslate"><span class="pre">pos</span></code>, <code class="docutils literal notranslate"><span class="pre">rel</span></code>, and <code class="docutils literal notranslate"><span class="pre">buttons</span></code>.</p>
+<p><em>event.pos</em> is a 2-tuple of integers representing the x and y
+coordinates of the mouse.</p>
+<p><em>event.rel</em> is a 2-tuple of integers representing the change in x and y
+coordinates since the last time this function was called.</p>
+<p><em>event.buttons</em> is a 3-tuple of integers representing the amount of
+mouse buttons being pressed. Index 0 represents the left mouse button,
+1 represents the middle mouse button, 2 represents the right mouse
+button. If the mouse button is down, the value is 1, 0 if it’s up.</p>
+<p>This method is predefined to implement the on_mouse_[enter, exit, drag]
+functions.</p>
+<p>If you aren’t satisfied with the implementation, feel free
+to redefine it. If you want to keep the implementation but also add
+additional functionality call super().on_mouse_move(event) when you’re
+redefining the function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_mouse_up">
+<code class="descname">on_mouse_up</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_mouse_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_mouse_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever a mouse button is released.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">MOUSEBUTTONUP</span></code> event. It contains the event
+attributes <code class="docutils literal notranslate"><span class="pre">pos</span></code> and <code class="docutils literal notranslate"><span class="pre">button</span></code>.</p>
+<p><em>event.pos</em> is a 2-tuple of integers representing the x and y
+coordinates of the mouse when it was released.</p>
+<p><em>event.button</em> is an integer representing the button being released. 1
+represents the left mouse button, 2 represents the middle mouse button,
+and 3 represents the right mouse button.</p>
+<p>This method is predefined to implement the GameObject.on_mouse_up
+method and to update internal data about whether or not an object is
+clicked.</p>
+<p>To redefine this method while keeping the implementation call
+super().on_mouse_up(event) at the top of your function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.on_resize">
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.on_resize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever the window is resized.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">VIDEORESIZE</span></code> event. it contains the event 
+attributes <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">w</span></code>, and <code class="docutils literal notranslate"><span class="pre">h</span></code>.</p>
+<p><em>event.size</em> is a 2-tuple of integers representing the width and height
+of the screen.</p>
+<p><em>event.w</em> is an integer representing the width of the screen.</p>
+<p><em>event.h</em> is an integer representing the height of the screen.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.quit">
+<code class="descname">quit</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.quit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.quit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method called when the exit button is pressed.</p>
+<p><em>event</em> is a pygame <code class="docutils literal notranslate"><span class="pre">QUIT</span></code> event. It has no event attributes.</p>
+<p>This method is predefined as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Redefine it if you need more control.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pygtails.Game.screen">
+<code class="descname">screen</code><a class="headerlink" href="#pygtails.Game.screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>The pygame Surface used to draw and blit images to the screen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.Game.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#Game.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.Game.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called every frame.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="gameobject">
+<h2>GameObject<a class="headerlink" href="#gameobject" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pygtails.GameObject">
+<em class="property">class </em><code class="descclassname">pygtails.</code><code class="descname">GameObject</code><span class="sig-paren">(</span><em>game</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple class to make game development with pygame more intuitive.</p>
+<p>Public Methods:</p>
+<p>is_colliding_with, update, on_mouse_enter, on_mouse_exit, on_mouse_stay,
+on_mouse_down, on_mouse_up, on_mouse_drag, move</p>
+<p>Instance Variables:</p>
+<p>game, ID, position, x, y</p>
+<p>Create a new GameObject</p>
+<p>Positional Arguments:</p>
+<dl class="docutils">
+<dt>game        The pygame.Game object that this GameObject will be</dt>
+<dd>added to.</dd>
+<dt>position    A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the object.</dd>
+</dl>
+<dl class="attribute">
+<dt id="pygtails.GameObject.ID">
+<code class="descname">ID</code><a class="headerlink" href="#pygtails.GameObject.ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of the game object (An integer).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pygtails.GameObject.game">
+<code class="descname">game</code><a class="headerlink" href="#pygtails.GameObject.game" title="Permalink to this definition">¶</a></dt>
+<dd><p>The pygtails.Game object that this object is a part of.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.is_colliding_with">
+<code class="descname">is_colliding_with</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.is_colliding_with"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.is_colliding_with" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if other is colliding with this object.</p>
+<p>Positional Arguments:</p>
+<dl class="docutils">
+<dt>other       A geometric object on the same plane as this object. The</dt>
+<dd>type of the object is specifically not specified, as this
+method is meant to support collision detection for multiple
+different types of objects determined by its implementation.
+Must implement collision with a 2D point (tuple).</dd>
+</dl>
+<p>Postconditions:</p>
+<p>Returns a boolean value, True if other is colliding with this object,
+False if not.</p>
+<p>This method is not implemented on the GameObject level.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the object by the given dimensions.  
+Positional Arguments:</p>
+<p>dx  The change in the x-axis. An integer.
+dy  The change in the y-axis. An integer.</p>
+<p>Post Conditions:</p>
+<p>Changes the object’s x, y, and position attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_down">
+<code class="descname">on_mouse_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called when the mouse is pressed inside this object.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A pygame.MOUSEBUTTONDOWN event. Contains event attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse when it was pressed.</dd>
+<dt>button    An integer representing the button being pressed. 1</dt>
+<dd>represents the left mouse button, 2 represents the middle
+mouse button, and 3 represents the right mouse button.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_drag">
+<code class="descname">on_mouse_drag</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_drag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_drag" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called each frame this object is dragged by the mouse.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A pygame MOUSEMOTION event. Contains the event attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse.</dd>
+<dt>rel       A 2-tuple of integers representing the change in x and y</dt>
+<dd>since the last time this function was called.</dd>
+<dt>buttons   A 3-tuple of integers representing the amount of mouse</dt>
+<dd>buttons being pressed. Index 0 represents the left mouse
+button, 1 represents the middle mouse button, 2 represents
+the right mouse button. If the mouse button is down, the
+value is 1, 0 if it’s up.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_enter">
+<code class="descname">on_mouse_enter</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_enter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_enter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever the mouse enters this object.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A pygame MOUSEMOTION event. Contains the event attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse.</dd>
+<dt>rel       A 2-tuple of integers representing the change in x and y</dt>
+<dd>since the last time this function was called.</dd>
+<dt>buttons   A 3-tuple of integers representing the amount of mouse</dt>
+<dd>buttons being pressed. Index 0 represents the left mouse
+button, 1 represents the middle mouse button, 2 represents
+the right mouse button. If the mouse button is down, the
+value is 1, 0 if it’s up.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_exit">
+<code class="descname">on_mouse_exit</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_exit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called whenever the mouse exits this object.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A pygame MOUSEMOTION event. Contains the event attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse.</dd>
+<dt>rel       A 2-tuple of integers representing the change in x and y</dt>
+<dd>since the last time this function was called.</dd>
+<dt>buttons   A 3-tuple of integers representing the amount of mouse</dt>
+<dd>buttons being pressed. Index 0 represents the left mouse
+button, 1 represents the middle mouse button, 2 represents
+the right mouse button. If the mouse button is down, the
+value is 1, 0 if it’s up.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_stay">
+<code class="descname">on_mouse_stay</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_stay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_stay" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called each frame the mouse is within this object.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A mock pygame MOUSEMOITION event. Contains attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse.</dd>
+<dt>rel       A 2-tuple of integers representing the change in x and y</dt>
+<dd>since the last time this function was called.</dd>
+<dt>buttons   A 3-tuple of integers representing the amount of mouse</dt>
+<dd>buttons being pressed. Index 0 represents the left mouse
+button, 1 represents the middle mouse button, 2 represents
+the right mouse button. If the mouse button is down, the
+value is 1, 0 if it’s up.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.on_mouse_up">
+<code class="descname">on_mouse_up</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.on_mouse_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.on_mouse_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called on mouse up if this object is clicked.</p>
+<p>Positional Arguments (passed implicitly):</p>
+<p>event       A pygame MOUSEBUTTONUP event. Contains the attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>pos       A 2-tuple of integers representing the x and y coordinates</dt>
+<dd>of the mouse when it was released.</dd>
+<dt>button    An integer representing the button being released. 1</dt>
+<dd>represents the left mouse button, 2 represents the middle
+mouse button, and 3 represents the right mouse button.</dd>
+</dl>
+</div></blockquote>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pygtails.GameObject.position">
+<code class="descname">position</code><a class="headerlink" href="#pygtails.GameObject.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of the game object.</p>
+<p>A 2-tuple of integers representing the x and y cooridnates</p>
+<p>Setting this will change the object’s x, y, and position attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pygtails.GameObject.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygtails.html#GameObject.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygtails.GameObject.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called every frame.</p>
+<p>This method is not predefined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pygtails.GameObject.x">
+<code class="descname">x</code><a class="headerlink" href="#pygtails.GameObject.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>The x position of the game object (An integer).</p>
+<p>Setting this will change the object’s x and position attributes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pygtails.GameObject.y">
+<code class="descname">y</code><a class="headerlink" href="#pygtails.GameObject.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>The y position of the game object (An integer).</p>
+<p>Setting this will change the object’s y and position attributes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pygtails Library</a><ul>
+<li><a class="reference internal" href="#game">Game</a></li>
+<li><a class="reference internal" href="#gameobject">GameObject</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to pygtails’s documentation!</a></li>
+      <li>Next: <a href="hello.html" title="next chapter">Hello, Pygtails!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pyglib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Josie Thompson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/pyglib.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
