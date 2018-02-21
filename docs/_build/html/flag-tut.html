@@ -6,7 +6,7 @@
   <head>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>A Quick Primer on Flags &#8212; pygtails  documentation</title>
+    <title>Flags and Bitwise Operations Tutorial &#8212; pygtails  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -31,8 +31,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="a-quick-primer-on-flags">
-<h1>A Quick Primer on Flags<a class="headerlink" href="#a-quick-primer-on-flags" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="flags-and-bitwise-operations-tutorial">
+<h1>Flags and Bitwise Operations Tutorial<a class="headerlink" href="#flags-and-bitwise-operations-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-quick-primer-on-flags">
+<h2>A Quick Primer on Flags<a class="headerlink" href="#a-quick-primer-on-flags" title="Permalink to this headline">¶</a></h2>
 <p>If you’re unfamiliar with the concept of a flag in the context of computer science, hopefully this is a decent place to start. A flag, in this case, is an integer value that represents a combination of different values. Each value is represented as a power of two, or as a bit of an integer. If we look at the binary representation of an integer, it can be said that for each value in the flag, if the value is “active” it’s it’s relative “bit” will be represented as a 1. If the value is “inactive” it’s relative bit is represented as a 0.</p>
 <p>As an example, let’s say we have a flag with two possible values; let’s say “left” and “right”; let’s say “left” is represented by the 2^0 place and “right” is represented by the 2^1 place. The possible flag values can then be represented by the following table:</p>
 <table border="1" class="docutils">
@@ -60,7 +62,7 @@
 </table>
 </div>
 <div class="section" id="bitwise-operations">
-<h1>Bitwise Operations<a class="headerlink" href="#bitwise-operations" title="Permalink to this headline">¶</a></h1>
+<h2>Bitwise Operations<a class="headerlink" href="#bitwise-operations" title="Permalink to this headline">¶</a></h2>
 <p>Performing operations on flags is usualy done with bitwise operations. Bitwise operations deal with the binary representations of integers. This is perfect for flags because flags are defined by their binary representations.</p>
 <p>Combining two or more flag values is usually done with bitwise-OR (|). The result of a bitwise-OR will include a 1 in every place it appeared in any of the combining values. The following are examples of the product of bitwise-OR operations on two integers::</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="o">|</span> <span class="mi">1</span> <span class="p">(</span><span class="mi">0001</span><span class="p">)</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">1001</span><span class="p">)</span>
@@ -74,7 +76,7 @@
 </div>
 </div>
 <div class="section" id="using-bitwise-operations-with-flags">
-<h1>Using Bitwise Operations with Flags<a class="headerlink" href="#using-bitwise-operations-with-flags" title="Permalink to this headline">¶</a></h1>
+<h2>Using Bitwise Operations with Flags<a class="headerlink" href="#using-bitwise-operations-with-flags" title="Permalink to this headline">¶</a></h2>
 <p>In the context of pygame, an example of how this can be used is to check if mutliple key mods are down. To check if both ctrl and alt are pressed, you might check the value of the key mod against KMOD_LCTRL | KMOD_LALT. Assuming <code class="docutils literal notranslate"><span class="pre">mod</span></code> is the flag value for the current key mods being pressed, a good way to do check if a specific combination is being pressed would look something like::</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">combo</span> <span class="o">=</span> <span class="n">KMOD_LCTRL</span> <span class="o">|</span> <span class="n">KMOD_LALT</span>
 <span class="n">mod</span> <span class="o">&amp;</span> <span class="n">combo</span> <span class="o">==</span> <span class="n">combo</span>
@@ -86,6 +88,7 @@
 </div>
 <p>will perform an exclusive check.</p>
 </div>
+</div>
 
 
           </div>
@@ -95,9 +98,12 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">A Quick Primer on Flags</a></li>
+<li><a class="reference internal" href="#">Flags and Bitwise Operations Tutorial</a><ul>
+<li><a class="reference internal" href="#a-quick-primer-on-flags">A Quick Primer on Flags</a></li>
 <li><a class="reference internal" href="#bitwise-operations">Bitwise Operations</a></li>
 <li><a class="reference internal" href="#using-bitwise-operations-with-flags">Using Bitwise Operations with Flags</a></li>
+</ul>
+</li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>
