@@ -10,6 +10,7 @@ Welcome to pygtails's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   Library Reference <pygtails>
    Hello Pygtails <hello>
    Pygame Constants <pygstants>
    Flags and Bitwise Operations Tutorial <flag-tut>

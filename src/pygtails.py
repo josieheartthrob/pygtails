@@ -131,14 +131,14 @@ class Game(object):
 
           key       An integer value represinting the key being pressed. The
                     corresponding character is defined by pygame.locals
-                    variables prefaced with K_. For a more in-depth
+                    variables prefaced with K\_. For a more in-depth
                     explanation of these, see the pygame documentation
                     section for pygame keycodes.
 
           mod       An integer flag value representing the total "modulation"
                     (shift, ctrl, alt, etc.) keys being pressed when the
                     current key was pressed. The possible flags are defined by
-                    pygame.locals variables prefaced with KMOD_. For more in-
+                    pygame.locals variables prefaced with KMOD\_. For more in-
                     depth explanation of these, see the module documentation
                     for pygame key mod flags.
 
@@ -155,13 +155,13 @@ class Game(object):
 
           key   An integer value representing the key being released. The
                 corresponding character is defined by pygame.locals variables
-                prefaced with K_. For more in-depth explanation of these, see
+                prefaced with K\_. For more in-depth explanation of these, see
                 th module documentation for pygame keycodes.
 
           mod   An integer flag value representing the total "modulation"
                 (shit, ctrl, alt, etc.) keys being pressed when the current
                 key was released. The possible flags are defined by
-                pygame.locals variables prefaced with KMOD_. For a more in-
+                pygame.locals variables prefaced with KMOD\_. For a more in-
                 depth explanation of thses, see the module documentation for
                 pygame key mod flags.
 
@@ -327,7 +327,7 @@ class Game(object):
 
         Positional Arguments:
 
-        key     A pygame key constant (pygame.locals variable starting with K_)
+        key     A pygame key constant (pygame.locals variable starting with K\_)
 
         Postconditions:
 
