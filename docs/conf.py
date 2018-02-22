@@ -14,7 +14,7 @@
 #
 import os
 import sys
-import pyygame
+import pygame
 from pygame.locals import *
 from mock import Mock
 
