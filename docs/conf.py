@@ -15,11 +15,13 @@
 import os
 import sys
 import pygame
+#import pygtails
 from pygame.locals import *
 from mock import Mock
 
 sys.modules['pygame'] = Mock()
 sys.modules['pygame.constants'] = Mock()
+sys.modules['../src/pygtails'] = Mock()
 
 sys.path.insert(0, os.path.abspath('../'))
 
