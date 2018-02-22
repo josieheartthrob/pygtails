@@ -14,6 +14,8 @@
 #
 import os
 import sys
+import pygame
+from pygame.locals import *
 from mock import Mock
 
 sys.modules['pygame'] = Mock()
