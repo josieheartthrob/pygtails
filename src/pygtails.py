@@ -4,6 +4,9 @@ Game        implements engine functionality. Subclass to build games.
 GameObject  A simple class to provide a more intuitive approach to gamedev.
 """
 
+#TODO: Create a MonoBehaviour-esque class to provide more flexibility (and also
+#      so I'm not redefining and redocumenting the same ten methods twice.
+
 import pygame
 import sys
 
@@ -13,6 +16,16 @@ from pygame.event import Event
 class Game(object):
     
     """A class that handles pygame events, input, and mouse-collision.
+        
+    *resolution* is a 2-tuple of integers that specify the width and height
+    of the screen.
+
+    *title* is a string used as the title of the window.
+        
+    *flags* is an integer flag representing the different controls over the
+    display mode that are active. For a full list of the different flags,
+    see :ref:`Pygame Display Mode Flags`. For more information on how flags
+    work, see :doc:`the Flags tutorial <flag-tut>`.
 
     Public Methods:
 
@@ -27,18 +40,6 @@ class Game(object):
     """
 
     def __init__(self, resolution, title, flags=0, depth=0):
-        """Create a new game with a blank window.
-        
-        *resolution* is a 2-tuple of integers that specify the width and height
-        of the screen.
-
-        *title* is a string used as the title of the window.
-        
-        *flags* is an integer flag representing the different controls over the
-        display mode that are active. For a full list of the different flags,
-        see :ref:`Pygame Display Mode Flags`. For more information on how flags
-        work, see :doc:`the Flags tutorial <flag-tut>`.
-        """
         pygame.init() 
         self._screen = pygame.display.set_mode(resolution, flags, depth)
         pygame.display.set_caption(title)
@@ -175,7 +176,7 @@ class Game(object):
         """
         #TODO: Add support for sleeping vs awake objects
         for ID, obj in self._objects.items():
-            mouse_is_colliding = obj.is_colliding_with(event.pos)
+            mouse_is_colliding = event.pos in obj
             if not obj._contains_mouse and mouse_is_colliding:
                 self._contains_mouse[ID] = obj
                 obj._contains_mouse = True
@@ -299,43 +300,27 @@ class GameObject(object):
 
     """A simple class to (hopefully) make pygame more intuitive.
 
+    *game* is the pygame.Game that this GameObject will be added to.
+
+    Intializing a GameObject modifies internal data in the Game it's
+    instantiated by.
+
     Public Methods:
 
-        | is_colliding_with, update, on_mouse_enter, on_mouse_exit,
-        | on_mouse_stay, on_mouse_down, on_mouse_up, on_mouse_drag, move
+        | update, on_mouse_enter, on_mouse_exit, on_mouse_stay, on_mouse_down,
+        | on_mouse_up, on_mouse_drag, move
 
     Instance Variables:
 
-        | game, ID, position, x, y
+        | game, ID
 
     """
 
-    def __init__(self, game, position):
-        """Create a new GameObject.
-
-        *game* is the pygame.Game that this GameObject will be added to.
-
-        *position* is a 2-tuple of integers representing the x and y coordinates
-        of the object.
-        """
+    def __init__(self, game):
         self._game = game
-        self._x, self._y = position
-        self._position = position
         self._contains_mouse = False
 
         self._id = game.add_object(self)
-
-    def is_colliding_with(self, other):
-        """Return true if other is colliding with this object.
-
-        *other* is an object on the same geometric plane as this object. As of
-        right now I think the plan is to have this method only support
-        collision with a point, and handle collision of 2D shapes in a
-        different manner.
-
-        This method is not implemented on the GameObject level.
-        """
-        pass
 
     def update(self):
         """This method is called every frame.
@@ -481,7 +466,7 @@ class GameObject(object):
 
     @property
     def ID(self):
-        """An inteer that represents this object's id."""
+        """An integer that represents this object's id."""
         return self._id
 
     @property
@@ -521,3 +506,127 @@ class GameObject(object):
     def y(self, other):
         self._y = other
         self._posiiton = (self._x, self._y)
+
+class Circle(GameObject):
+
+    """A GameObject with a circular "hitmask".
+
+    *game* is the Game this object is a part of.
+
+    *corner* is a 2-tuple of integers representing the x and y coordinates of
+    the upper-left corner of the bounding square of circle.
+
+    *radius* is a numeric value representing the radius of the circle.
+
+    Initializing a Circle will modify internal data in the Game it's
+    instantiated with.
+
+    Public Methods:
+
+        | update, on_mouse_enter, on_mouse_exit, on_mouse_stay, on_mouse_down,
+        | on_mouse_up, on_mouse_drag, move
+
+    Instance Variables:
+
+        | game, ID, center, corner, radius
+
+    """
+
+    def __init__(self, game, corner, radius):
+        super().__init__(game, corner)
+        self._radius = radius
+        self._corner = self.position
+        self._center = self.x+radius, self.y+radius
+
+    @property
+    def radius(self):
+        """An integer representing the radius of the circle.
+        
+        Setting this will change the ``radius`` and ``center`` attributes.
+        """
+        return self._radius
+    @radius.setter
+    def radius(self, other):
+        self._radius = radius
+        self._center = (self._x+radius, self._y+radius)
+
+    @property
+    def center(self):
+        """A 2-tuple of integers representing the center of the circle.
+
+        Setting this will change the ``center`` and ``corner`` attributes.
+        """
+        return self._center
+    @center.setter
+    def center(self, other):
+        x, y = other
+        corner = x-self.radius, y-self.radius
+        self._x, self._y = corner
+        self._position = corner
+        self._corner = corner
+
+        self._center = other
+
+    def __contains__(self, other):
+        x, y = other
+        return self.radius**2 >= x**2 + y**2
+
+class Rectangle(GameObject):
+    """A GameObject with a circular "hitmask".
+
+    *game* is the Game this object is a part of.
+
+    *corner* is a 2-tuple of integers representing the x and y coordinates of
+    the upper-left corner of the rectangle.
+
+    *width* is an integer representing the width of the rectangle.
+
+    *height* is an integer representing the height of the rectangle.
+
+    Initializing a Rectangle will modify internal data in the Game it's
+    instantiated with.
+
+    Public Methods:
+
+        | update, on_mouse_enter, on_mouse_exit, on_mouse_stay, on_mouse_down,
+        | on_mouse_up, on_mouse_drag, move
+
+    Instance Variables:
+
+        | game, ID, center, corner, width, height
+    
+    """
+
+    def __init__(self, game, corner, width, height):
+        super().__init__(game, corner)
+        self._width = width
+        self._height = height
+
+    @property
+    def width(self):
+        """An integer that represents the width of the rectangle.
+
+        This attribute is mutable.
+        """
+        return self._width
+    @width.setter
+    def width(self, other):
+        self._width = other
+
+    @property
+    def height(self):
+        """An integer that represents the height of the rectangle.
+
+        This attribute is mutable.
+        """
+        return self._height
+    @height.setter
+    def height(self, other):
+        self._height = other
+
+    def __contains__(self, other):
+        x, y = other
+        contains = (self.x <= x <= self.x+self.width and
+                    self.y <= y <= self.y+self.height)
+
+        return contains
