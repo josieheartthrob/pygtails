@@ -14,3 +14,15 @@ GameObject
 
 .. autoclass:: GameObject
     :members:
+
+Circle
+------
+
+.. autoclass:: Circle
+    :members:
+
+Rectangle
+---------
+
+.. autoclass:: Rectangle
+    :members:
