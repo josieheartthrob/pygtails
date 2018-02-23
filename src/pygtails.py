@@ -447,18 +447,6 @@ class GameObject(object):
         """
         pass
 
-    def move(self, dx, dy):
-        """Move the object by the given dimensions.  
-        
-        *dx* is an integer that represents the change in the x-axis.
-        *dy* is an integer that represents the change in the y-axis.
-
-        This method changes the object's x, y, and position attributes.
-        """
-        self._x += dx
-        self._y += dy
-        self._position = (self._x, self._y)
-
     @property
     def game(self):
         """The pygtails.Game object that this object is a part of."""
@@ -468,44 +456,6 @@ class GameObject(object):
     def ID(self):
         """An integer that represents this object's id."""
         return self._id
-
-    @property
-    def position(self):
-        """The position of the game object.
-
-        A 2-tuple of integers representing the x and y cooridnates
-
-        Setting this will change the object's x, y, and position attributes.
-        """
-        return self._position
-    @position.setter
-    def position(self, other):
-        self._x, self._y = other
-        self._positon = other
-
-    @property
-    def x(self):
-        """An integer representing the object's position on the x-axis.
-        
-        Setting this will change the object's x and position attributes.
-        """
-        return self._x
-    @x.setter
-    def x(self, other):
-        self._x = other
-        self._position = (self._x, self._y)
-
-    @property
-    def y(self):
-        """An integer representing the object's position on the y-axis.
-        
-        Setting this will change the object's y and position attributes.
-        """
-        return self._y
-    @y.setter
-    def y(self, other):
-        self._y = other
-        self._posiiton = (self._x, self._y)
 
 class Circle(GameObject):
 
@@ -533,10 +483,23 @@ class Circle(GameObject):
     """
 
     def __init__(self, game, corner, radius):
-        super().__init__(game, corner)
-        self._radius = radius
-        self._corner = self.position
+        super().__init__(game)
+        self._corner = corner
         self._center = self.x+radius, self.y+radius
+        self._radius = radius
+
+    @property
+    def corner(self):
+        """A 2-tuple of integers representing the center of the circle.
+
+        Setting this will change the ``corner`` and ``center`` attributes.
+        """
+        return self._corner
+    @property
+    def corner(self, other):
+        x, y = other
+        self._corner = other
+        self._center = x+self.radius, y+self.radius
 
     @property
     def radius(self):
@@ -547,8 +510,8 @@ class Circle(GameObject):
         return self._radius
     @radius.setter
     def radius(self, other):
-        self._radius = radius
         self._center = (self._x+radius, self._y+radius)
+        self._radius = radius
 
     @property
     def center(self):
@@ -561,8 +524,6 @@ class Circle(GameObject):
     def center(self, other):
         x, y = other
         corner = x-self.radius, y-self.radius
-        self._x, self._y = corner
-        self._position = corner
         self._corner = corner
 
         self._center = other
@@ -593,14 +554,26 @@ class Rectangle(GameObject):
 
     Instance Variables:
 
-        | game, ID, center, corner, width, height
+        | game, ID, corner, width, height
     
     """
 
     def __init__(self, game, corner, width, height):
-        super().__init__(game, corner)
+        super().__init__(game)
+        self._corner = corner
         self._width = width
         self._height = height
+
+    @property
+    def corner(self):
+        """A 2-tuple of integers that represent the x and y coordinates of the
+        upper-left corner of the rectangle.
+        """
+        return self._corner
+    @corner.setter
+    def corner(self, other):
+        x, y = other
+        self._corner = other
 
     @property
     def width(self):
