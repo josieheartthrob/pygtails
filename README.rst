@@ -10,4 +10,4 @@ python 3.x
 Installation
 ------------
 
-``pip3 install pygtails`` should hopefully work! I have yet to test it out though.
+``pip3 install pygtails``
