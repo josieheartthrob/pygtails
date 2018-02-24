@@ -533,7 +533,7 @@ class Circle(GameObject):
         return self.radius**2 >= x**2 + y**2
 
 class Rectangle(GameObject):
-    """A GameObject with a circular "hitmask".
+    """A GameObject with a rectangular "hitmask".
 
     *game* is the Game this object is a part of.
 
@@ -566,8 +566,12 @@ class Rectangle(GameObject):
 
     @property
     def corner(self):
-        """A 2-tuple of integers that represent the x and y coordinates of the
-        upper-left corner of the rectangle.
+        """The upper left corner of the rectangle.
+
+        A 2-tuple of integers that represent the x and y coordinates of
+        the upper-left corner of the rectangle.
+
+        This attribute is mutable.
         """
         return self._corner
     @corner.setter
