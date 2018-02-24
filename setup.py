@@ -7,7 +7,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='pygtails',
-      version='0.1.2.dev1',
+      version='0.1.1',
       description='A simple wrapper around pygame',
       long_description=long_description,
       url='http://pygtails.readthedocs.io/en/latest/',
@@ -19,5 +19,5 @@ setup(name='pygtails',
                    'Programming Language :: Python :: 3 :: Only',
                    'Topic :: Software Development :: Libraries :: pygame'],
       python_requires=">=3",
-      py_modules=["pygtails"],
+      py_modules=["src/pygtails"],
       project_urls={'Source': 'https://github.com/josiest/pygtails/'})
