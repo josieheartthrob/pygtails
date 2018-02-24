@@ -18,7 +18,7 @@ Welcome to pygtails's documentation!
 About
 =====
 
-`Pygtails`_ is a simple little wrapper around the `pygame library`_.
+`Pygtails`_ is a simple little extension around the `pygame library`_.
 
 Pygame is a cool game development library made for python, and it has a great community. It has tons of active users contributing to it's `project showcase`_. A new game is posted there sometimes several times a week, and the majority of the submissions to `pyweek`_ seem to be working with pygame.
 
