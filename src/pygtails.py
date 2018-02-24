@@ -268,9 +268,9 @@ class Game(object):
         # TODO: provide full documentation for the functions and attributes
         #       to implement if not GameObject
 
-        obj_id = self.cur_id
-        self._objects[obj_id] = obj
-        self.cur_id += 1
+        obj_id = self._cur_id
+        self._objects[obj_id] = other
+        self._cur_id += 1
         return obj_id
 
     def destroy_object(self, _id):
@@ -484,8 +484,9 @@ class Circle(GameObject):
 
     def __init__(self, game, corner, radius):
         super().__init__(game)
+        x, y = corner
         self._corner = corner
-        self._center = self.x+radius, self.y+radius
+        self._center = x+radius, y+radius
         self._radius = radius
 
     @property
@@ -602,8 +603,9 @@ class Rectangle(GameObject):
         self._height = other
 
     def __contains__(self, other):
-        x, y = other
-        contains = (self.x <= x <= self.x+self.width and
-                    self.y <= y <= self.y+self.height)
+        otherx, othery = other
+        x, y = self.corner
+        contains = (x <= otherx <= x+self.width and
+                    y <= othery <= y+self.height)
 
         return contains
