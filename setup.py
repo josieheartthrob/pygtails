@@ -19,5 +19,6 @@ setup(name='pygtails',
                    'Programming Language :: Python :: 3 :: Only',
                    'Topic :: Software Development :: Libraries :: pygame'],
       python_requires=">=3",
-      py_modules=["src/pygtails"],
+      package_dir={'': 'src'},
+      packages=[''],
       project_urls={'Source': 'https://github.com/josiest/pygtails/'})
