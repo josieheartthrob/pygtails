@@ -563,8 +563,10 @@ class Rectangle(GameObject):
     def __init__(self, game, corner, width, height):
         super().__init__(game)
         self._corner = corner
+        x, y = corner
         self._width = width
         self._height = height
+        self._corners = ((x,y), (x+width,y), (x+width,y+height), (x,y+height))
 
     @property
     def corner(self):
@@ -602,6 +604,21 @@ class Rectangle(GameObject):
     @height.setter
     def height(self, other):
         self._height = other
+
+    @property
+    def corners(self):
+        """A tuple of all of the corners of the rectangle.
+        
+        A 2-dimensional tuple, where the inner tuples are 2-tuples of integers
+        representing the x and y coordinates of the different corners of the
+        rectangle.
+
+        The order that the points appear are top-left, top-right, bottom-right,
+        bottom-left.
+
+        This attribute is immutable.
+        """
+        return self._corners
 
     def __contains__(self, other):
         otherx, othery = other
