@@ -530,8 +530,9 @@ class Circle(GameObject):
         self._center = other
 
     def __contains__(self, other):
-        x, y = other
-        return self.radius**2 >= x**2 + y**2
+        otherx, othery = other
+        x, y = self.center
+        return self.radius**2 >= (x-otherx)**2 + (y-othery)**2
 
 class Rectangle(GameObject):
     """A GameObject with a rectangular "hitmask".
