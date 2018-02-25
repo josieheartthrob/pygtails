@@ -496,7 +496,7 @@ class Circle(GameObject):
         Setting this will change the ``corner`` and ``center`` attributes.
         """
         return self._corner
-    @property
+    @corner.setter
     def corner(self, other):
         x, y = other
         self._corner = other
