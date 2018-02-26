@@ -57,14 +57,14 @@ class Game(object):
                         pygame.KEYUP:           self.on_key_up,
                         pygame.MOUSEMOTION:     self.on_mouse_move,
                         pygame.MOUSEBUTTONUP:   self.on_mouse_up,
-                        pygame.JOYAXISMOTION:   lambda e: pass,
-                        pygame.JOYBALLMOTION:   lambda e: pass,
-                        pygame.JOYHATMOTION:    lambda e: pass,
-                        pygame.JOYBUTTONDOWN:   lambda e: pass,
+                        pygame.JOYAXISMOTION:   self.ignore,
+                        pygame.JOYBALLMOTION:   self.ignore,
+                        pygame.JOYHATMOTION:    self.ignore,
+                        pygame.JOYBUTTONDOWN:   self.ignore,
                         pygame.MOUSEBUTTONDOWN: self.on_mouse_down,
                         pygame.VIDEORESIZE:     self.on_resize,
-                        pygame.VIDEOEXPOSE:     lambda e: pass,
-                        pygame.USEREVENT:       lambda e: pass}
+                        pygame.VIDEOEXPOSE:     self.ignore,
+                        pygame.USEREVENT:       self.ignore}
 
     def main(self):
         """The main loop. Call this to run the game."""
@@ -451,6 +451,9 @@ class GameObject(object):
 
         This method is not predefined.
         """
+        pass
+
+    def ignore(self, event):
         pass
 
     @property
