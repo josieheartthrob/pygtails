@@ -269,6 +269,9 @@ class Game(object):
         """
         pass
 
+    def ignore(self, event):
+        pass
+
     def add_object(self, other):
         """Add a GameObject ``other`` to the Game and return its id."""
         # TODO: provide full documentation for the functions and attributes
@@ -451,9 +454,6 @@ class GameObject(object):
 
         This method is not predefined.
         """
-        pass
-
-    def ignore(self, event):
         pass
 
     @property
