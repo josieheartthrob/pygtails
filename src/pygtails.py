@@ -57,8 +57,14 @@ class Game(object):
                         pygame.KEYUP:           self.on_key_up,
                         pygame.MOUSEMOTION:     self.on_mouse_move,
                         pygame.MOUSEBUTTONUP:   self.on_mouse_up,
+                        pygame.JOYAXISMOTION:   lambda e: pass,
+                        pygame.JOYBALLMOTION:   lambda e: pass,
+                        pygame.JOYHATMOTION:    lambda e: pass,
+                        pygame.JOYBUTTONDOWN:   lambda e: pass,
                         pygame.MOUSEBUTTONDOWN: self.on_mouse_down,
-                        pygame.VIDEORESIZE:     self.on_resize}
+                        pygame.VIDEORESIZE:     self.on_resize,
+                        pygame.VIDEOEXPOSE:     lambda e: pass,
+                        pygame.USEREVENT:       lambda e: pass}
 
     def main(self):
         """The main loop. Call this to run the game."""
