@@ -190,5 +190,5 @@ RESIZABLE           Create a resizable window
 NOFRAME             Create window with no border or controls
 =================   ========================================
 
-.. _pygame.key documentation: https://www.pygame.org/docs/ref/key.html/
-.. _pygame.display documentation: https://www.pygame.org/docs/ref/display.html/
+.. _pygame.key documentation: https://www.pygame.org/docs/ref/key.html
+.. _pygame.display documentation: https://www.pygame.org/docs/ref/display.html

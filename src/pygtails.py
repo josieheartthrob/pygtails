@@ -57,14 +57,14 @@ class Game(object):
                         pygame.KEYUP:           self.on_key_up,
                         pygame.MOUSEMOTION:     self.on_mouse_move,
                         pygame.MOUSEBUTTONUP:   self.on_mouse_up,
-                        pygame.JOYAXISMOTION:   self.ignore,
-                        pygame.JOYBALLMOTION:   self.ignore,
-                        pygame.JOYHATMOTION:    self.ignore,
-                        pygame.JOYBUTTONDOWN:   self.ignore,
+                        pygame.JOYAXISMOTION:   self.on_joy_move,
+                        pygame.JOYBALLMOTION:   self.on_joy_ball_move,
+                        pygame.JOYHATMOTION:    self.on_joy_hat_move,
+                        pygame.JOYBUTTONDOWN:   self.on_joy_button_down,
                         pygame.MOUSEBUTTONDOWN: self.on_mouse_down,
                         pygame.VIDEORESIZE:     self.on_resize,
-                        pygame.VIDEOEXPOSE:     self.ignore,
-                        pygame.USEREVENT:       self.ignore}
+                        pygame.VIDEOEXPOSE:     self.on_expose,
+                        pygame.USEREVENT:       self.on_user_event}
 
     def main(self):
         """The main loop. Call this to run the game."""
@@ -245,6 +245,18 @@ class Game(object):
                 obj.on_mouse_down(event)
             self._clicked.update(self._contains_mouse)
 
+    def on_joy_move(self, event):
+        pass
+
+    def on_joy_ball_move(self, event):
+        pass
+
+    def on_joy_hat_move(self, event):
+        pass
+
+    def on_joy_button_down(self, event):
+        pass
+
     def on_resize(self, event):
         """This method is called whenever the window is resized.
         
@@ -262,14 +274,17 @@ class Game(object):
         """
         pass
 
+    def on_expose(self, event):
+        pass
+
+    def on_user_event(self, event):
+        pass
+
     def update(self):
         """This method is called every frame.
 
         This method is not predefined.
         """
-        pass
-
-    def ignore(self, event):
         pass
 
     def add_object(self, other):
@@ -455,6 +470,10 @@ class GameObject(object):
         This method is not predefined.
         """
         pass
+
+    def destroy(self):
+        """Deletes this object from the game world."""
+        self.game.destroy_object(self.ID)
 
     @property
     def game(self):
